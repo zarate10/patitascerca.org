@@ -1,10 +1,10 @@
-package main.java.patascerca.proyecto.models;
+package backend.api.models;
 
+import backend.api.DTO.UserDTO;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import main.java.patascerca.proyecto.DTO.UsuarioDTO;
 
 import java.util.Date;
 
@@ -26,8 +26,8 @@ public class User {
     private String photo;
     private int rank;
 
-    public UsuarioDTO toDTO() {
-        UsuarioDTO dto = new UsuarioDTO();
+    public UserDTO toDTO() {
+        UserDTO dto = new UserDTO();
         dto.username = this.username;
         dto.descripcion = this.descripcion;
         dto.email = this.email;

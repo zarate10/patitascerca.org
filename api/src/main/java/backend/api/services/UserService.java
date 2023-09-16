@@ -1,8 +1,8 @@
-package main.java.patascerca.proyecto.services;
+package backend.api.services;
 
-import main.java.patascerca.proyecto.DTO.UsuarioDTO;
-import main.java.patascerca.proyecto.models.User;
-import main.java.patascerca.proyecto.repositories.UserRepository;
+import backend.api.DTO.UserDTO;
+import backend.api.models.User;
+import backend.api.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -30,8 +30,8 @@ public class UserService {
         }
     }
 
-    public List<UsuarioDTO> getAll() {
-        List<UsuarioDTO> usersDTO = new ArrayList<>();
+    public List<UserDTO> getAll() {
+        List<UserDTO> usersDTO = new ArrayList<>();
 
         for(User u : userRepository.findAll()) {
             usersDTO.add(u.toDTO());

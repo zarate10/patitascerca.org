@@ -1,6 +1,6 @@
-package main.java.patascerca.proyecto.DTO;
+package backend.api.DTO;
 
-public class UsuarioDTO {
+public class UserDTO {
     public String username;
     public String email;
     public String descripcion;

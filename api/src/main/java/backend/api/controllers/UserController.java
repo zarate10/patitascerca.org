@@ -1,8 +1,8 @@
 package backend.api.controllers;
 
-import main.java.patascerca.proyecto.DTO.UsuarioDTO;
-import main.java.patascerca.proyecto.models.User;
-import main.java.patascerca.proyecto.services.UserService;
+import backend.api.DTO.UserDTO;
+import backend.api.models.User;
+import backend.api.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,7 +17,7 @@ public class UserController {
     private UserService uservice;
 
     @GetMapping("/all")
-    public List<UsuarioDTO> getAll() {
+    public List<UserDTO> getAll() {
         return uservice.getAll();
     }
 
