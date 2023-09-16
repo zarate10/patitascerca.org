@@ -1,4 +1,4 @@
-package com.example.demo.Model;
+package patascerca.proyecto.models;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
