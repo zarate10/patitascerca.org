@@ -1,0 +1,6 @@
+patascerca\proyecto\services\UsuarioService.class
+patascerca\proyecto\TpAppsInteractivasApplication.class
+patascerca\proyecto\repositories\UsuarioRepository.class
+patascerca\proyecto\controllers\UsuarioController.class
+patascerca\proyecto\DTO\UsuarioDTO.class
+patascerca\proyecto\models\Usuario.class
