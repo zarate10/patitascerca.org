@@ -22,7 +22,7 @@ public class Usuario {
     private int telefono;
     private String ciudad;
     private String descripcion;
-    private Date fecha_registro;
+    private Date fechaRegistro;
     private String foto;
     private int rango;
 
@@ -31,9 +31,9 @@ public class Usuario {
         dto.username = this.username;
         dto.descripcion = this.descripcion;
         dto.email = this.email;
-        dto.registrationDate = this.fecha_registro.toString();
-        dto.photo = this.foto;
-        dto.rank = this.rango;
+        dto.fechaRegistro = this.fechaRegistro.toString();
+        dto.foto = this.foto;
+        dto.rango = this.rango;
         return dto;
     }
 }

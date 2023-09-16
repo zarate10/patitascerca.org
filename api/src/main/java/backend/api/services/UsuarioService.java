@@ -18,16 +18,16 @@ import static org.springframework.http.HttpStatus.*;
 public class UsuarioService {
 
     @Autowired
-    UsuarioRepository userRepository;
+    private UsuarioRepository userRepository;
 
     public ResponseEntity create(Usuario usuario) {
         try {
-            usuario.setFecha_registro(new Date());
+            usuario.setFechaRegistro(new Date());
             userRepository.save(usuario);
-            return ResponseEntity.status(CREATED).build();
         } catch (Exception e) {
             return ResponseEntity.status(INTERNAL_SERVER_ERROR).build();
         }
+        return ResponseEntity.status(CREATED).build();
     }
 
     public List<UsuarioDTO> getAll() {
