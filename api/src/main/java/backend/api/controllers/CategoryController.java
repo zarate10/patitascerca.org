@@ -1,13 +1,13 @@
 package backend.api.controllers;
 
+import backend.api.DTO.CategoryDTO;
 import backend.api.models.Category;
 import backend.api.services.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("category")
@@ -20,5 +20,13 @@ public class CategoryController {
         return categoryService.create(c);
     }
 
-    // TO-DO: crear endpoint para eliminar categoria y para obtener las categorias con sus id.
+    @DeleteMapping("delete/{id}/{user_id}")
+    public ResponseEntity delete(@PathVariable int id, @PathVariable int user_id) {
+        return categoryService.delete(id, user_id);
+    }
+
+    @GetMapping("all")
+    public List<CategoryDTO> getAll() {
+        return categoryService.getAll();
+    }
 }

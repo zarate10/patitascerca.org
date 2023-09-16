@@ -324,8 +324,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 120,
-									"top": 248,
+									"left": 144,
+									"top": 232,
 									"width": 10,
 									"height": 10
 								},
@@ -340,8 +340,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 120,
-									"top": 248,
+									"left": 144,
+									"top": 232,
 									"width": 10,
 									"height": 10
 								}
@@ -3958,6 +3958,33 @@
 								},
 								"aggregation": "shared",
 								"multiplicity": "1"
+							}
+						},
+						{
+							"_type": "UMLAssociation",
+							"_id": "AAAAAAGKn9jiSLEPrqU=",
+							"_parent": {
+								"$ref": "AAAAAAGKmWFzW57cjSk="
+							},
+							"end1": {
+								"_type": "UMLAssociationEnd",
+								"_id": "AAAAAAGKn9jiSLEQrEs=",
+								"_parent": {
+									"$ref": "AAAAAAGKn9jiSLEPrqU="
+								},
+								"reference": {
+									"$ref": "AAAAAAGKmWFzW57cjSk="
+								}
+							},
+							"end2": {
+								"_type": "UMLAssociationEnd",
+								"_id": "AAAAAAGKn9jiSLER/Eg=",
+								"_parent": {
+									"$ref": "AAAAAAGKn9jiSLEPrqU="
+								},
+								"reference": {
+									"$ref": "AAAAAAGKmUxILhSGltE="
+								}
 							}
 						}
 					],

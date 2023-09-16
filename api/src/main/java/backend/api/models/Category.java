@@ -1,5 +1,6 @@
 package backend.api.models;
 
+import backend.api.DTO.CategoryDTO;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -17,4 +18,11 @@ public class Category {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String title;
+
+    public CategoryDTO toDTO() {
+        CategoryDTO c = new CategoryDTO();
+        c.id = this.id;
+        c.title = this.title;
+        return c;
+    }
 }
