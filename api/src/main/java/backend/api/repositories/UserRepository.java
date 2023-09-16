@@ -1,4 +1,4 @@
-package main.java.patascerca.proyecto.repositories;
+package backend.api.repositories;
 
 import main.java.patascerca.proyecto.models.User;
 import org.springframework.data.jpa.repository.JpaRepository;

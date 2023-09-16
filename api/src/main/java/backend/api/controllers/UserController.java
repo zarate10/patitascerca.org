@@ -1,4 +1,4 @@
-package main.java.patascerca.proyecto.controllers;
+package backend.api.controllers;
 
 import main.java.patascerca.proyecto.DTO.UsuarioDTO;
 import main.java.patascerca.proyecto.models.User;
