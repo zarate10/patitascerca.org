@@ -1,4 +1,4 @@
-package patascerca.proyecto.DTO;
+package main.java.patascerca.proyecto.DTO;
 
 public class UsuarioDTO {
     public String username;

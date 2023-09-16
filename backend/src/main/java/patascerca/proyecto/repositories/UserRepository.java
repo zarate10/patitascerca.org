@@ -1,8 +1,8 @@
-package patascerca.proyecto.repositories;
+package main.java.patascerca.proyecto.repositories;
 
+import main.java.patascerca.proyecto.models.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import patascerca.proyecto.models.User;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Integer> {

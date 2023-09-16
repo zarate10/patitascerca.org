@@ -1,11 +1,11 @@
-package patascerca.proyecto.controllers;
+package main.java.patascerca.proyecto.controllers;
 
+import main.java.patascerca.proyecto.DTO.UsuarioDTO;
+import main.java.patascerca.proyecto.models.User;
+import main.java.patascerca.proyecto.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import patascerca.proyecto.DTO.UsuarioDTO;
-import patascerca.proyecto.models.User;
-import patascerca.proyecto.services.UserService;
 
 import java.util.List;
 

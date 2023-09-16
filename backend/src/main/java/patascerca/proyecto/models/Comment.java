@@ -1,4 +1,4 @@
-package patascerca.proyecto.models;
+package main.java.patascerca.proyecto.models;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

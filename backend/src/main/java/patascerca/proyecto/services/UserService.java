@@ -1,11 +1,12 @@
-package patascerca.proyecto.services;
+package main.java.patascerca.proyecto.services;
 
+import main.java.patascerca.proyecto.DTO.UsuarioDTO;
+import main.java.patascerca.proyecto.models.User;
+import main.java.patascerca.proyecto.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import patascerca.proyecto.DTO.UsuarioDTO;
-import patascerca.proyecto.models.User;
-import patascerca.proyecto.repositories.UserRepository;
+
 
 import java.util.ArrayList;
 import java.util.Date;

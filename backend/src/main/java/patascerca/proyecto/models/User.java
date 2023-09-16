@@ -1,9 +1,10 @@
-package patascerca.proyecto.models;
+package main.java.patascerca.proyecto.models;
+
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import patascerca.proyecto.DTO.UsuarioDTO;
+import main.java.patascerca.proyecto.DTO.UsuarioDTO;
 
 import java.util.Date;
 
