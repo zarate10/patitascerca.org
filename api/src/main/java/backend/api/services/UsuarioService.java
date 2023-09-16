@@ -1,8 +1,8 @@
 package backend.api.services;
 
-import backend.api.DTO.UserDTO;
-import backend.api.models.User;
-import backend.api.repositories.UserRepository;
+import backend.api.DTO.UsuarioDTO;
+import backend.api.models.Usuario;
+import backend.api.repositories.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -15,14 +15,14 @@ import java.util.List;
 import static org.springframework.http.HttpStatus.*;
 
 @Service
-public class UserService {
+public class UsuarioService {
 
     @Autowired
-    UserRepository userRepository;
+    UsuarioRepository userRepository;
 
-    public ResponseEntity create(User usuario) {
+    public ResponseEntity create(Usuario usuario) {
         try {
-            usuario.setRegistrationDate(new Date());
+            usuario.setFecha_registro(new Date());
             userRepository.save(usuario);
             return ResponseEntity.status(CREATED).build();
         } catch (Exception e) {
@@ -30,10 +30,10 @@ public class UserService {
         }
     }
 
-    public List<UserDTO> getAll() {
-        List<UserDTO> usersDTO = new ArrayList<>();
+    public List<UsuarioDTO> getAll() {
+        List<UsuarioDTO> usersDTO = new ArrayList<>();
 
-        for(User u : userRepository.findAll()) {
+        for(Usuario u : userRepository.findAll()) {
             usersDTO.add(u.toDTO());
         }
 

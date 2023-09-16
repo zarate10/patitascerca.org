@@ -1,6 +1,6 @@
 package backend.api.DTO;
 
-public class UserDTO {
+public class UsuarioDTO {
     public String username;
     public String email;
     public String descripcion;
