@@ -8,10 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import static org.springframework.http.HttpStatus.*;
 
@@ -20,6 +17,11 @@ public class UsuarioService {
 
     @Autowired
     private UsuarioRepository userRepository;
+
+    private boolean isValid(Usuario user) {
+        //if user.
+        return true;
+    }
 
     public ResponseEntity create(Usuario usuario) {
         if(userRepository.ExistUsername(usuario.getUsername(), usuario.getEmail()) > 0) {
@@ -52,16 +54,49 @@ public class UsuarioService {
             return ResponseEntity.status(INTERNAL_SERVER_ERROR).build();
         }
     }
-
-
-    public List<UsuarioDTO> getAll() {
-        List<UsuarioDTO> usersDTO = new ArrayList<>();
-
-        for(Usuario u : userRepository.findAll()) {
-            usersDTO.add(u.toDTO());
+    public ResponseEntity updateProfile(Usuario user){
+        try{
+            Usuario newUser = userRepository.findById(user.getId()).get();
+            newUser.setTelefono(user.getTelefono());
+            newUser.setCiudad(user.getCiudad());
+            newUser.setDescripcion(user.getDescripcion());
+            newUser.setFoto(user.getFoto());
+            userRepository.save(newUser);
+            return ResponseEntity.status(OK).build();
+        }catch (Exception e){
+            return ResponseEntity.status(NOT_MODIFIED).build();
         }
-
-        return usersDTO;
     }
+
+    public ResponseEntity updatePassword(Map<String,String> data) {
+        try {
+            Integer id = Integer.parseInt(data.get("id"));
+            Usuario user = userRepository.findById(id).get();
+            if (user.getPassword().equals(data.get("oldPassword"))) {
+                user.setPassword(data.get("newPassword"));
+            }
+        } catch (Exception e) {
+            return ResponseEntity.status(BAD_REQUEST).build();
+        }
+        return ResponseEntity.status(OK).build();
+    }
+
+    public ResponseEntity deleteUser(Usuario user){
+        try{
+            userRepository.delete(user);
+            return ResponseEntity.status(OK).build();
+        }catch (Exception e){
+            return ResponseEntity.status(BAD_REQUEST).build();
+        }
+    }
+
+        public List<UsuarioDTO> getAll () {
+            List<UsuarioDTO> usersDTO = new ArrayList<>();
+
+            for (Usuario u : userRepository.findAll()) {
+                usersDTO.add(u.toDTO());
+            }
+            return usersDTO;
+        }
 
 }

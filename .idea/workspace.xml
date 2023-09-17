@@ -6,7 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="142d836d-a247-4fea-b345-25c6bc18c18e" name="Changes" comment="featured loginservice">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/main/java/backend/api/repositories/UsuarioRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/backend/api/repositories/UsuarioRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/main/java/backend/api/controllers/UsuarioController.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/backend/api/controllers/UsuarioController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/src/main/java/backend/api/services/UsuarioService.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/backend/api/services/UsuarioService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -36,7 +36,7 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "C:/Users/lula/OneDrive/Escritorio/2DO AÑO/APLICACIONES INTERACTIVAS/Git Proyecto",
+    "last_opened_file_path": "C:/Users/monte/Desktop/UADE/2do Año/Segundo cuatrim/Aplicaciones Interactivas/patitascerca.org",
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.0"

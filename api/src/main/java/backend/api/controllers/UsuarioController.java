@@ -31,4 +31,11 @@ public class UsuarioController {
     public ResponseEntity login(@RequestBody Map<String, String> data){
         return uservice.login(data);
     }
+
+    @PutMapping("/updateProfile")
+    public ResponseEntity updateProfile(@RequestBody Usuario user){return uservice.updateProfile(user);}
+
+    @PatchMapping("/updatePassword")
+    public ResponseEntity updatePassword(@RequestBody Map<String,String> data){return uservice.updatePassword(data);}
+
 }
