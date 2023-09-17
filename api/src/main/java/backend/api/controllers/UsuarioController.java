@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("user")
@@ -27,7 +28,7 @@ public class UsuarioController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity login(@RequestBody String username, @RequestBody String password){
-        return uservice.login(username,password);
+    public ResponseEntity login(@RequestBody Map<String, String> data){
+        return uservice.login(data);
     }
 }

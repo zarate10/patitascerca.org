@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import static org.springframework.http.HttpStatus.*;
 
@@ -31,14 +32,19 @@ public class UsuarioService {
         return ResponseEntity.status(CREATED).build();
     }
 
-    public ResponseEntity<Usuario> login(String username, String password){
+    public ResponseEntity<Usuario> login(Map<String, String> data){
         try{
-            Integer user_id = userRepository.findIdByUsername(username);
-            Usuario usuario = userRepository.findById(user_id).orElse(null);
-            if(usuario == null || !usuario.getPassword().equals(password)){
-                return ResponseEntity.status(UNAUTHORIZED).build();
+            Integer user_id = userRepository.findIdByUsername(data.get("username"));
+            if (user_id != null)
+            {
+                Usuario usuario = userRepository.findById(user_id).orElse(null);
+                if(usuario == null || !usuario.getPassword().equals(data.get("password")))
+                {
+                    return ResponseEntity.status(UNAUTHORIZED).build();
+                }
+                return ResponseEntity.ok(usuario);
             }
-            return ResponseEntity.ok(usuario);
+            return ResponseEntity.status(UNAUTHORIZED).build();
         } catch (Exception e){
             return ResponseEntity.status(INTERNAL_SERVER_ERROR).build();
         }
