@@ -22,6 +22,7 @@ public class UsuarioService {
 
     public ResponseEntity create(Usuario usuario) {
         try {
+            usuario.setRango(0);
             usuario.setFechaRegistro(new Date());
             userRepository.save(usuario);
         } catch (Exception e) {

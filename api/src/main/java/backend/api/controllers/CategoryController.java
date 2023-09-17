@@ -20,9 +20,9 @@ public class CategoryController {
         return categoryService.create(c);
     }
 
-    @DeleteMapping("delete/{id}/{user_id}")
-    public ResponseEntity delete(@PathVariable int id, @PathVariable int user_id) {
-        return categoryService.delete(id, user_id);
+    @DeleteMapping("delete/{category_id}/{user_id}")
+    public ResponseEntity delete(@PathVariable int category_id, @PathVariable int user_id) {
+        return categoryService.delete(category_id, user_id);
     }
 
     @GetMapping("all")
