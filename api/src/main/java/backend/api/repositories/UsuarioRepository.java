@@ -10,4 +10,7 @@ import org.springframework.stereotype.Repository;
 public interface UsuarioRepository extends JpaRepository<Usuario, Integer> {
     @Query("SELECT u.id FROM Usuario u WHERE u.username = :username")
     Integer findIdByUsername(@Param("username") String username);
+
+    @Query("SELECT COUNT(u.id) FROM Usuario u WHERE u.username = :username or u.email = :email")
+    Integer ExistUsername(@Param("username") String username, @Param("email") String email);
 }

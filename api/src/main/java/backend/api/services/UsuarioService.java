@@ -22,6 +22,9 @@ public class UsuarioService {
     private UsuarioRepository userRepository;
 
     public ResponseEntity create(Usuario usuario) {
+        if(userRepository.ExistUsername(usuario.getUsername(), usuario.getEmail()) > 0) {
+            return ResponseEntity.status(UNAUTHORIZED).build();
+        }
         try {
             usuario.setRango(0);
             usuario.setFechaRegistro(new Date());
@@ -32,7 +35,7 @@ public class UsuarioService {
         return ResponseEntity.status(CREATED).build();
     }
 
-    public ResponseEntity<Usuario> login(Map<String, String> data){
+    public ResponseEntity<UsuarioDTO> login(Map<String, String> data){
         try{
             Integer user_id = userRepository.findIdByUsername(data.get("username"));
             if (user_id != null)
@@ -42,7 +45,7 @@ public class UsuarioService {
                 {
                     return ResponseEntity.status(UNAUTHORIZED).build();
                 }
-                return ResponseEntity.ok(usuario);
+                return ResponseEntity.ok(usuario.toDTO());
             }
             return ResponseEntity.status(UNAUTHORIZED).build();
         } catch (Exception e){
