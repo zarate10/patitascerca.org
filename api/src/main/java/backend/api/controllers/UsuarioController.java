@@ -25,4 +25,9 @@ public class UsuarioController {
     public ResponseEntity create(@RequestBody Usuario user) {
         return uservice.create(user);
     }
+
+    @PostMapping("/login")
+    public ResponseEntity login(@RequestBody String username, @RequestBody String password){
+        return uservice.login(username,password);
+    }
 }
