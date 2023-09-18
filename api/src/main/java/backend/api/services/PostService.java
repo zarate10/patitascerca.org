@@ -1,7 +1,6 @@
 package backend.api.services;
 
 import backend.api.models.Post;
-import backend.api.models.Usuario;
 import backend.api.repositories.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

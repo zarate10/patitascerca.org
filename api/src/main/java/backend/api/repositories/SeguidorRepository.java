@@ -1,6 +1,5 @@
 package backend.api.repositories;
 
-import backend.api.DTO.UsuarioDTO;
 import backend.api.models.Seguidor;
 import backend.api.models.Usuario;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -12,7 +11,6 @@ import java.util.List;
 
 @Repository
 public interface SeguidorRepository extends JpaRepository<Seguidor, Integer> {
-
     @Query("SELECT s.seguidor FROM Seguidor s WHERE s.seguido.id = :id")
     List<Usuario> findSeguidores(@Param("id") Integer id);
 

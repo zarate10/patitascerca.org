@@ -54,5 +54,4 @@ public class CategoryService {
 
         return categorias;
     }
-
 }

@@ -14,14 +14,8 @@ import static org.springframework.http.HttpStatus.*;
 
 @Service
 public class UsuarioService {
-
     @Autowired
     private UsuarioRepository userRepository;
-
-    private boolean isValid(Usuario user) {
-        //if user.
-        return true;
-    }
 
     public ResponseEntity create(Usuario usuario) {
         if(userRepository.ExistUsername(usuario.getUsername(), usuario.getEmail()) > 0) {
@@ -63,7 +57,7 @@ public class UsuarioService {
             newUser.setFoto(user.getFoto());
             userRepository.save(newUser);
             return ResponseEntity.status(OK).build();
-        }catch (Exception e){
+        } catch (Exception e){
             return ResponseEntity.status(NOT_MODIFIED).build();
         }
     }
@@ -82,21 +76,21 @@ public class UsuarioService {
     }
 
     public ResponseEntity deleteUser(Usuario user){
+        // implementar borrado en cascada de las publicaciones, comentarios y likes
         try{
             userRepository.delete(user);
             return ResponseEntity.status(OK).build();
-        }catch (Exception e){
+        } catch (Exception e) {
             return ResponseEntity.status(BAD_REQUEST).build();
         }
     }
 
-        public List<UsuarioDTO> getAll () {
-            List<UsuarioDTO> usersDTO = new ArrayList<>();
-
-            for (Usuario u : userRepository.findAll()) {
-                usersDTO.add(u.toDTO());
-            }
-            return usersDTO;
+   public List<UsuarioDTO> getAll () {
+        List<UsuarioDTO> usersDTO = new ArrayList<>();
+        for (Usuario u : userRepository.findAll()) {
+            usersDTO.add(u.toDTO());
         }
+        return usersDTO;
+     }
 
 }
