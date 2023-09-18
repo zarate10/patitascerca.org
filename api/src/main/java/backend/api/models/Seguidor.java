@@ -6,27 +6,18 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+@Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
 public class Seguidor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private int id;
     @ManyToOne
-    @JoinColumn(name = "seguidor_id")
+    @JoinColumn(name = "seguidor_id", referencedColumnName = "id")
     private Usuario seguidor;
-
     @ManyToOne
-    @JoinColumn(name = "usuario_seguido_id")
-    private Usuario siguiendo;
-
-    public SeguidorDTO toDTO(){
-        SeguidorDTO dto = new SeguidorDTO();
-        dto.id = this.id;
-        dto.siguiendo = this.siguiendo;
-        dto.seguidor = this.seguidor;
-        return dto;
-    }
+    @JoinColumn(name = "seguido_id", referencedColumnName = "id")
+    private Usuario seguido;
 }

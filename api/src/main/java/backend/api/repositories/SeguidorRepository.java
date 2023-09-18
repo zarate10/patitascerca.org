@@ -12,12 +12,13 @@ import java.util.List;
 
 @Repository
 public interface SeguidorRepository extends JpaRepository<Seguidor, Integer> {
-    @Query("SELECT u FROM Usuario u JOIN Seguidor s ON u.id = s.usuarioSeguido.id WHERE s.usuarioSeguido.id = :id")
+
+    @Query("SELECT s.seguidor FROM Seguidor s WHERE s.seguido.id = :id")
     List<Usuario> findSeguidores(@Param("id") Integer id);
 
-    @Query("SELECT u FROM Usuario u JOIN Seguidor s ON u.id = s.seguidor WHERE s.seguidor = :id")
-    List<Seguidor> findSeguidos(@Param("id") Integer id);
+    @Query("SELECT s.seguido FROM Seguidor s WHERE s.seguidor.id = :id")
+    List<Usuario> findSeguidos(@Param("id") Integer id);
 
-    @Query("SELECT s FROM Seguidor s WHERE s.seguidor.id = :idSeguidor AND s.usuarioSeguido.id = :idSeguido")
+    @Query("SELECT s FROM Seguidor s WHERE s.seguidor.id = :idSeguidor AND s.seguido.id = :idSeguido")
     Seguidor findRelacion(@Param("idSeguidor") Integer idSeguidor, @Param("idSeguido") Integer idSeguido);
 }

@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @AllArgsConstructor // genera un constructor con 1 parámetro para cada atributo de la clase
@@ -25,6 +26,7 @@ public class Usuario {
     private Date fechaRegistro;
     private String foto;
     private int rango;
+
 
     public UsuarioDTO toDTO() {
         UsuarioDTO dto = new UsuarioDTO();

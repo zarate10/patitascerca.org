@@ -18,7 +18,7 @@ public class PostService {
 
     public ResponseEntity create(Post p) {
         try {
-            p.setDate(new Date());
+            p.setFecha(new Date());
             postRepository.save(p);
         } catch (Exception e) {
             return ResponseEntity.status(INTERNAL_SERVER_ERROR).build();
@@ -29,7 +29,7 @@ public class PostService {
     public ResponseEntity update(Post post){
         try{
             Post newPost = postRepository.findById(post.getId()).get();
-            newPost.setCategory(post.getCategory());
+            newPost.setCategoria(post.getCategoria());
             postRepository.save(newPost);
             return ResponseEntity.status(OK).build();
         }catch (Exception e){

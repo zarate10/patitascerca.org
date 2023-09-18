@@ -20,5 +20,4 @@ public class PatitascercaApplication {
 				.version("0.0.1")
 				.description("Endpoints del proyecto 'PATITASCERCA', APLICACIONES INTERACTIVAS, UADE."));
 	}
-
 }
