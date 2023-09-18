@@ -5,14 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="142d836d-a247-4fea-b345-25c6bc18c18e" name="Changes" comment="featured loginservice">
+      <change afterPath="$PROJECT_DIR$/api/src/main/java/backend/api/DTO/SeguidorDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/src/main/java/backend/api/models/Seguidor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/src/main/java/backend/api/repositories/SeguidorRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/src/main/java/backend/api/services/SeguidorService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/main/java/backend/api/controllers/PostController.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/backend/api/controllers/PostController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/main/java/backend/api/services/PostService.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/backend/api/services/PostService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
