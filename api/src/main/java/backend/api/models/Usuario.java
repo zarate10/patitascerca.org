@@ -33,7 +33,7 @@ public class Usuario {
     @OneToMany(mappedBy = "seguido", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Seguidor> seguidos = new ArrayList<>();
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Seguidor> posts = new ArrayList<>();
+    private List<Post> posts = new ArrayList<>();
     
     public UsuarioDTO toDTO() {
         UsuarioDTO dto = new UsuarioDTO();
