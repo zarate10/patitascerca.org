@@ -20,4 +20,10 @@ public class PostController {
     public ResponseEntity create(@RequestBody Post p) {
         return postService.create(p);
     }
+
+    @PostMapping("update")
+    public ResponseEntity update(@RequestBody Post p) {
+        return postService.update(p);
+    }
+
 }

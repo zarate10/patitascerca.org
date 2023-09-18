@@ -6,8 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="142d836d-a247-4fea-b345-25c6bc18c18e" name="Changes" comment="featured loginservice">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/main/java/backend/api/controllers/UsuarioController.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/backend/api/controllers/UsuarioController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/main/java/backend/api/services/UsuarioService.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/backend/api/services/UsuarioService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/main/java/backend/api/controllers/PostController.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/backend/api/controllers/PostController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/main/java/backend/api/services/PostService.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/backend/api/services/PostService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
