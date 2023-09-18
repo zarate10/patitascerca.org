@@ -16,25 +16,29 @@ public class UsuarioController {
     @Autowired // Dependency Injection - autowired le pasa una instancia de la clase UsuarioService a UsuarioController, designada en uservice.
     private UsuarioService uservice;
 
-    @GetMapping("/all")
+    @GetMapping("all")
     public List<UsuarioDTO> getAll() {
         return uservice.getAll();
     }
 
-    @PostMapping("/register")
+    @PostMapping("register")
     public ResponseEntity create(@RequestBody Usuario user) {
         return uservice.create(user);
     }
 
-    @PostMapping("/login")
+    @PostMapping("login")
     public ResponseEntity login(@RequestBody Map<String, String> data){
         return uservice.login(data);
     }
 
-    @PutMapping("/updateProfile")
+    @PutMapping("updateProfile")
     public ResponseEntity updateProfile(@RequestBody Usuario user){return uservice.updateProfile(user);}
 
-    @PatchMapping("/updatePassword")
+    @PatchMapping("updatePassword")
     public ResponseEntity updatePassword(@RequestBody Map<String,String> data){return uservice.updatePassword(data);}
 
+    @DeleteMapping("delete/{id}")
+    public ResponseEntity delete(@PathVariable Integer id, @RequestBody Usuario u) {
+        return uservice.deleteUser(id, u);
+    }
 }

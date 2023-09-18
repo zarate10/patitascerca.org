@@ -1,6 +1,5 @@
 package backend.api.models;
 
-import backend.api.DTO.SeguidorDTO;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -14,7 +13,7 @@ public class Seguidor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @ManyToOne
+    @ManyToOne()
     @JoinColumn(name = "seguidor_id", referencedColumnName = "id")
     private Usuario seguidor;
     @ManyToOne

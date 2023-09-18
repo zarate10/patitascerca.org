@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -27,7 +28,13 @@ public class Usuario {
     private String foto;
     private int rango;
 
-
+    @OneToMany(mappedBy = "seguidor", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Seguidor> seguidores = new ArrayList<>();
+    @OneToMany(mappedBy = "seguido", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Seguidor> seguidos = new ArrayList<>();
+    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Seguidor> posts = new ArrayList<>();
+    
     public UsuarioDTO toDTO() {
         UsuarioDTO dto = new UsuarioDTO();
         dto.username = this.username;

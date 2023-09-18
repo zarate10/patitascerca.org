@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-
 import java.util.*;
 
 import static org.springframework.http.HttpStatus.*;
@@ -70,18 +69,27 @@ public class UsuarioService {
                 user.setPassword(data.get("newPassword"));
             }
         } catch (Exception e) {
-            return ResponseEntity.status(BAD_REQUEST).build();
+            return ResponseEntity.status(INTERNAL_SERVER_ERROR).build();
         }
         return ResponseEntity.status(OK).build();
     }
 
-    public ResponseEntity deleteUser(Usuario user){
+    public ResponseEntity deleteUser(Integer id, Usuario u){
         // implementar borrado en cascada de las publicaciones, comentarios y likes
         try{
-            userRepository.delete(user);
-            return ResponseEntity.status(OK).build();
+            if (u.getRango() < 3) {
+                return ResponseEntity.status(UNAUTHORIZED).build();
+            }
+
+            Usuario user = userRepository.findById(id).orElse(null);
+            if (user != null) {
+                userRepository.delete(user);
+                return ResponseEntity.status(OK).build();
+            } else {
+                return ResponseEntity.status(NOT_FOUND).build();
+            }
         } catch (Exception e) {
-            return ResponseEntity.status(BAD_REQUEST).build();
+            return ResponseEntity.status(INTERNAL_SERVER_ERROR).build();
         }
     }
 
