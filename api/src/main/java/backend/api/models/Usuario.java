@@ -36,6 +36,8 @@ public class Usuario {
     private List<Post> posts = new ArrayList<>();
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Likes> postsLiked = new ArrayList<>();
+    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Comentario> postCommented = new ArrayList<>();
 
     public UsuarioDTO toDTO() {
         UsuarioDTO dto = new UsuarioDTO();
