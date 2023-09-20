@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 public class LikesController {
     @Autowired
     private LikesService likesService;
-    @PostMapping("likePost/{idPost}")
-    public ResponseEntity like(@PathVariable Integer idPost, @RequestBody Usuario usuario){ return likesService.like(idPost,usuario);}
+
+    @PostMapping("like/{idPost}")
+    public ResponseEntity like(@PathVariable Integer idPost, @RequestBody Usuario usuario) { return likesService.like(idPost, usuario); }
 }

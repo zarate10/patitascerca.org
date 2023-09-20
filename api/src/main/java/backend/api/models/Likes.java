@@ -9,6 +9,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+// esta clase se llama "likes" y no "like" porque
+// es una palabra reservada, como sucedió con la mayoría de clases y/o atributos
 public class Likes {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

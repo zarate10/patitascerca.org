@@ -9,5 +9,8 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface LikesRepository extends JpaRepository<Likes, Integer> {
     @Query("SELECT COUNT(l.id) FROM Likes l WHERE l.post.id = :post_id AND l.usuario.id = :usuario_id")
-    Boolean findByPostAndUsuario(@Param("post_id") Integer post_id, @Param("usuario_id") Integer usuario_id);
+    Integer likesUserPost(@Param("post_id") Integer post_id, @Param("usuario_id") Integer usuario_id);
+
+    @Query("SELECT l FROM Likes l WHERE l.post.id = :post_id AND l.usuario.id = :usuario_id")
+    Likes getPostLiked(@Param("post_id") Integer post_id, @Param("usuario_id") Integer usuario_id);
 }

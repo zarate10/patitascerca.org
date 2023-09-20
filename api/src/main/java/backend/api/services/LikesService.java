@@ -19,12 +19,18 @@ public class LikesService {
     private LikesRepository likesRepository;
     @Autowired
     private PostRepository postRepository;
-    public ResponseEntity like(Integer post_id, Usuario usuario){
+
+    public ResponseEntity like(Integer postID, Usuario usuario){
         try {
             Likes l = new Likes();
-            l.setPost(postRepository.getById(post_id));
+            l.setPost(postRepository.getById(postID));
             l.setUsuario(usuario);
-            likesRepository.save(l);
+
+            if(likesRepository.likesUserPost(postID, usuario.getId()) > 0) {
+                likesRepository.delete(likesRepository.getPostLiked(postID, usuario.getId()));
+            } else {
+                likesRepository.save(l);
+            }
             return ResponseEntity.status(OK).build();
         } catch (Exception e) {
             return ResponseEntity.status(INTERNAL_SERVER_ERROR).build();
