@@ -21,11 +21,6 @@ public class SeguidorController {
         return seguidorService.seguir(nuevaRelacion);
     }
 
-    @PostMapping("unfollow")
-    public ResponseEntity unfollow(@RequestBody Map<String, Usuario> relacion) {
-        return seguidorService.unfollow(relacion);
-    }
-
     @GetMapping("seguidores/{id}")
     public List<UsuarioDTO> seguidores(@PathVariable Integer id) {
         return seguidorService.obtenerSeguidoresDeUsuario(id);

@@ -18,5 +18,8 @@ public interface SeguidorRepository extends JpaRepository<Seguidor, Integer> {
     List<Usuario> findSeguidos(@Param("id") Integer id);
 
     @Query("SELECT s FROM Seguidor s WHERE s.seguidor.id = :idSeguidor AND s.seguido.id = :idSeguido")
-    Seguidor findRelacion(@Param("idSeguidor") Integer idSeguidor, @Param("idSeguido") Integer idSeguido);
+    Seguidor getRelacion(@Param("idSeguidor") Integer idSeguidor, @Param("idSeguido") Integer idSeguido);
+
+    @Query("SELECT COUNT(s.id) FROM Seguidor s WHERE s.seguidor.id = :idSeguidor AND s.seguido.id = :idSeguido")
+    Integer existeRelacion(@Param("idSeguidor") Integer idSeguidor, @Param("idSeguido") Integer idSeguido);
 }
