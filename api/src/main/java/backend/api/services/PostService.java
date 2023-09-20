@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import static org.springframework.http.HttpStatus.*;
 
@@ -34,6 +36,10 @@ public class PostService {
         }catch (Exception e){
             return ResponseEntity.status(BAD_REQUEST).build();
         }
+    }
+
+    public List<Post> getAll() {
+        return postRepository.findAll();
     }
 
 }

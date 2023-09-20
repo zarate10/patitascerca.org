@@ -1,6 +1,7 @@
 package backend.api.models;
 
 import backend.api.DTO.UsuarioDTO;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -41,6 +42,7 @@ public class Usuario {
 
     public UsuarioDTO toDTO() {
         UsuarioDTO dto = new UsuarioDTO();
+        dto.id = this.id;
         dto.username = this.username;
         dto.descripcion = this.descripcion;
         dto.email = this.email;
