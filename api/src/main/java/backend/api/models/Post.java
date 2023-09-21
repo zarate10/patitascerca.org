@@ -17,22 +17,26 @@ import java.util.List;
 public class Post {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private int id;
+
     @ManyToOne
-    @JoinColumn(name = "category_id", referencedColumnName = "id")
+    @JoinColumn(name = "categoria_id", referencedColumnName = "id")
     private Category categoria;
+
+    @ManyToOne
+    @JoinColumn(name = "usuario_id", referencedColumnName = "id")
+    private Usuario usuario;
+
     private String descripcion;
     private Date fecha;
     private String ubicacion;
     private String imagen;
-    @ManyToOne
-    @JoinColumn(name = "user_id", referencedColumnName = "id")
-    private Usuario usuario;
 
-    @OneToMany(mappedBy = "post", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonIgnore
-    private List<Likes> likes = new ArrayList<>();
     @OneToMany(mappedBy = "post", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Likes> likes;
+
     @JsonIgnore
-    private List<Comentario> comments = new ArrayList<>();
+    @OneToMany(mappedBy = "post", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Comentario> comentarios;
 }

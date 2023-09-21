@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("post")
@@ -15,18 +16,18 @@ public class PostController {
     @Autowired
     private PostService postService;
 
+    @GetMapping("all")
+    public List<Post> get() {
+        return postService.getAll();
+    }
+
     @PostMapping("create")
     public ResponseEntity create(@RequestBody Post p) {
         return postService.create(p);
     }
 
-    @PatchMapping("update")
-    public ResponseEntity update(@RequestBody Post p) {
-        return postService.update(p);
-    }
-
-    @GetMapping("all")
-    public List<Post> get() {
-        return postService.getAll();
+    @DeleteMapping("delete")
+    public ResponseEntity create(@RequestBody Map<String, Integer> postID) {
+        return postService.delete(postID.get("post_id"));
     }
 }

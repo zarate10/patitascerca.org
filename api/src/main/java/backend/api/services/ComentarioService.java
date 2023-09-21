@@ -15,12 +15,9 @@ public class ComentarioService {
     @Autowired
     private ComentarioRepository cr;
 
-    public ResponseEntity comentar(Post postID, Usuario userID, String comment) {
+
+    public ResponseEntity comentar(Comentario c) {
         try {
-            Comentario c = new Comentario();
-            c.setComentario(comment);
-            c.setUsuario(userID);
-            c.setPost(postID);
             cr.save(c);
             return ResponseEntity.status(CREATED).build();
         } catch (Exception e) {

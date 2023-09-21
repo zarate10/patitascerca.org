@@ -1,7 +1,7 @@
 package backend.api.models;
 
 import backend.api.DTO.UsuarioDTO;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -20,6 +20,7 @@ public class Usuario {
     @GeneratedValue(strategy = GenerationType.IDENTITY) // GeneratedValue hace que el ID sea auto-incremental.
     private int id;
     private String username;
+    @JsonIgnore
     private String password;
     private String email;
     private int telefono;
@@ -29,14 +30,23 @@ public class Usuario {
     private String foto;
     private int rango;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "seguidor", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Seguidor> seguidores = new ArrayList<>();
+
+    @JsonIgnore
     @OneToMany(mappedBy = "seguido", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Seguidor> seguidos = new ArrayList<>();
-    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Post> posts = new ArrayList<>();
+
+    @JsonIgnore
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Likes> postsLiked = new ArrayList<>();
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Post> posts = new ArrayList<>();
+
+    @JsonIgnore
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Comentario> postCommented = new ArrayList<>();
 

@@ -14,9 +14,11 @@ public class Comentario {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     int id;
     String comentario;
+
     @ManyToOne
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     Usuario usuario;
+
     @ManyToOne
     @JoinColumn(name = "post_id", referencedColumnName = "id")
     Post post;

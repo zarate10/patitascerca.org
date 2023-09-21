@@ -6,6 +6,7 @@ import backend.api.models.Seguidor;
 import backend.api.models.Usuario;
 import backend.api.repositories.LikesRepository;
 import backend.api.repositories.PostRepository;
+import backend.api.repositories.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -16,20 +17,25 @@ import static org.springframework.http.HttpStatus.OK;
 @Service
 public class LikesService {
     @Autowired
-    private LikesRepository likesRepository;
+    private LikesRepository lr;
     @Autowired
-    private PostRepository postRepository;
+    private PostRepository pr;
+    @Autowired
+    private UsuarioRepository ur;
 
-    public ResponseEntity like(Integer postID, Usuario usuario){
+    public ResponseEntity like(Integer postID, Integer usuarioID){
         try {
             Likes l = new Likes();
-            l.setPost(postRepository.getById(postID));
-            l.setUsuario(usuario);
+            pr.findById(postID).ifPresent(post -> l.setPost(post));
+            ur.findById(usuarioID).ifPresent(user -> l.setUsuario(user));
 
-            if(likesRepository.likesUserPost(postID, usuario.getId()) > 0) {
-                likesRepository.delete(likesRepository.getPostLiked(postID, usuario.getId()));
+            if(lr.likesUserPost(postID, usuarioID) > 0) {
+                lr.delete(lr.getPostLiked(postID, usuarioID));
             } else {
-                likesRepository.save(l);
+                if (l.getPost() != null && l.getUsuario() != null)
+                    lr.save(l);
+                else
+                   throw new Exception();
             }
             return ResponseEntity.status(OK).build();
         } catch (Exception e) {
