@@ -20,7 +20,6 @@ public class Usuario {
     @GeneratedValue(strategy = GenerationType.IDENTITY) // GeneratedValue hace que el ID sea auto-incremental.
     private int id;
     private String username;
-    @JsonIgnore
     private String password;
     private String email;
     private int telefono;

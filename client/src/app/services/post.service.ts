@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { IPost } from '../interfaces/IPost';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -14,5 +15,9 @@ export class PostService {
     this.http.post("http://localhost:8080/post/create", post).subscribe(data => {
       console.log(data);
     }); 
+  }
+
+  get(): Observable<any> {
+    return this.http.get("http://localhost:8080/post/all");
   }
 }

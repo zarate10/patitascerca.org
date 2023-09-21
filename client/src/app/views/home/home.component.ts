@@ -3,6 +3,7 @@ import { ICategory } from 'src/app/interfaces/ICategory';
 import { IPost } from 'src/app/interfaces/IPost';
 import { CategoryService } from 'src/app/services/category.service';
 import { PostService } from 'src/app/services/post.service';
+import {  ChangeDetectorRef } from '@angular/core';
 
 @Component({
     selector: 'app-home',
@@ -11,13 +12,22 @@ import { PostService } from 'src/app/services/post.service';
 })
 export class HomeComponent {
     categorias!: ICategory[]; 
+    posts!: IPost[];
 
     constructor(private categoryService: CategoryService, private postService: PostService) { }
 
-    ngOnInit() {
+    getData() {
         this.categoryService.get().subscribe(data => (
             this.categorias = data
         ));
+
+        this.postService.get().subscribe(data => {
+            this.posts = data; 
+        }); 
+    }
+
+    ngOnInit() {
+        this.getData(); 
     }
 
     getIdCategoria(titulo: string) {
@@ -48,6 +58,8 @@ export class HomeComponent {
         
         if (usuario && categoriaID) {
             this.postService.create(post); 
+            this.getData(); 
         }
+
     }
 }

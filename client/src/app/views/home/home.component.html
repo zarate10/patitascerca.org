@@ -11,3 +11,13 @@
     <input type="text" placeholder="URL IMAGEN" id="imagen">
     <button (click)="handlePost($event)">Publicar</button>
 </form>
+
+<div *ngFor="let post of posts">
+    <h3>
+        {{ post.categoria.title }}
+    </h3>
+    <p>{{ post.descripcion }}</p>
+    <img [src]="post.imagen" [alt]="post.categoria" width="300" height="200">
+    <br>
+    <small>{{ post.ubicacion }}</small>
+</div>
