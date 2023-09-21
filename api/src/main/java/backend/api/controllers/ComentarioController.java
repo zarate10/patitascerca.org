@@ -16,7 +16,7 @@ public class ComentarioController {
 
     @PostMapping("create")
     public ResponseEntity create(@RequestBody Comentario c) {
-        return cs.comentar(c.getPost(), c.getUsuario(), c.getComentario());
+        return cs.comentar(c);
     }
 
     @DeleteMapping("delete")

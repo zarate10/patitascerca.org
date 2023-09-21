@@ -1,0 +1,25 @@
+<img src="https://i.imgur.com/xkLOAzb.png" alt="patitascerca" width="400">
+<p>home works!</p>
+<form>
+    <h3>Crear post</h3>
+    <select id="categorias">
+        <option disabled selected>Seleccionar</option>
+        <option *ngFor="let categoria of categorias">{{ categoria.title }}</option>
+    </select>
+    <textarea placeholder="Publicar" id="descripcion"></textarea>  
+    <input type="text" placeholder="Ubicación" id="ubicacion">
+    <input type="text" placeholder="URL IMAGEN" id="imagen">
+    <button (click)="handlePost($event)">Publicar</button>
+</form>
+
+<div *ngFor="let post of posts">
+    <h3>
+        {{ post.categoria.title }}
+    </h3>
+    <p>{{ post.descripcion }}</p>
+    <img [src]="post.imagen" [alt]="post.categoria" width="300" height="200">
+    <br>
+    <small>{{ post.ubicacion }}</small>
+    <button routerLink="/post/{{post.id}}">Detalles</button>
+    <button (click)="handleLike($event, post.id!)" >👍</button>
+</div>

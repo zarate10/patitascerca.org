@@ -7,33 +7,39 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.List;
 
 import static org.springframework.http.HttpStatus.*;
 
 @Service
 public class PostService {
     @Autowired
-    private PostRepository postRepository;
+    private PostRepository pr;
+
+    public List<Post> getAll() {
+        return pr.findAll();
+    }
 
     public ResponseEntity create(Post p) {
         try {
             p.setFecha(new Date());
-            postRepository.save(p);
+            pr.save(p);
         } catch (Exception e) {
             return ResponseEntity.status(INTERNAL_SERVER_ERROR).build();
         }
         return ResponseEntity.status(CREATED).build();
     }
 
-    public ResponseEntity update(Post post){
-        try{
-            Post newPost = postRepository.findById(post.getId()).get();
-            newPost.setCategoria(post.getCategoria());
-            postRepository.save(newPost);
-            return ResponseEntity.status(OK).build();
-        }catch (Exception e){
-            return ResponseEntity.status(BAD_REQUEST).build();
+    public ResponseEntity delete(int postID) {
+        try {
+            pr.findById(postID).ifPresent(post -> pr.delete(post));
+        } catch (Exception e) {
+            return ResponseEntity.status(INTERNAL_SERVER_ERROR).build();
         }
+        return ResponseEntity.status(CREATED).build();
     }
 
+    public Post getPostById(Integer id) {
+        return pr.findById(id).orElse(null);
+    }
 }

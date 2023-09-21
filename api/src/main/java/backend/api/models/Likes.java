@@ -17,9 +17,9 @@ public class Likes {
     private Integer id;
 
     @ManyToOne
-    @JoinColumn(name = "post_id")
-    private Post post;
-    @ManyToOne
     @JoinColumn(name = "usuario_id")
     private Usuario usuario;
+    @ManyToOne
+    @JoinColumn(name = "post_id")
+    private Post post;
 }

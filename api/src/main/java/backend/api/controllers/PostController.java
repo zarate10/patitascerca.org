@@ -4,25 +4,36 @@ import backend.api.models.Post;
 import backend.api.services.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("post")
+@CrossOrigin(origins = "http://localhost:4200")
 public class PostController {
+    // devolver usuario DTO
     @Autowired
     private PostService postService;
+
+    @GetMapping("all")
+    public List<Post> get() {
+        return postService.getAll();
+    }
 
     @PostMapping("create")
     public ResponseEntity create(@RequestBody Post p) {
         return postService.create(p);
     }
 
-    @PostMapping("update")
-    public ResponseEntity update(@RequestBody Post p) {
-        return postService.update(p);
+    @DeleteMapping("delete")
+    public ResponseEntity create(@RequestBody Map<String, Integer> postID) {
+        return postService.delete(postID.get("post_id"));
     }
 
+    @GetMapping("{id}")
+    public Post getPostById(@PathVariable Integer id) {
+        return postService.getPostById(id);
+    }
 }
