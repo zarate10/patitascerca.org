@@ -4,6 +4,7 @@ import { IPost } from 'src/app/interfaces/IPost';
 import { CategoryService } from 'src/app/services/category.service';
 import { PostService } from 'src/app/services/post.service';
 import {  ChangeDetectorRef } from '@angular/core';
+import { IUsuario } from 'src/app/interfaces/IUsuario';
 
 @Component({
     selector: 'app-home',
@@ -13,6 +14,7 @@ import {  ChangeDetectorRef } from '@angular/core';
 export class HomeComponent {
     categorias!: ICategory[]; 
     posts!: IPost[];
+    usuario: IUsuario = JSON.parse(sessionStorage.getItem("session")!);
 
     constructor(private categoryService: CategoryService, private postService: PostService) { }
 
@@ -23,7 +25,9 @@ export class HomeComponent {
 
         this.postService.get().subscribe(data => {
             this.posts = data; 
+            console.log(data)
         }); 
+
     }
 
     ngOnInit() {
@@ -61,5 +65,11 @@ export class HomeComponent {
             this.getData(); 
         }
 
+    }
+
+    handleLike(e: any, postID: number) {
+        e.preventDefault(); 
+        this.postService.like(postID, this.usuario.id!); 
+        alert("le diste like");
     }
 }

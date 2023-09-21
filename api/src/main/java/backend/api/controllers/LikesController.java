@@ -10,10 +10,10 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("likes")
+@CrossOrigin(origins = "http://localhost:4200")
 public class LikesController {
     @Autowired
     private LikesService likesService;
-
 
     @PostMapping("like")
     public ResponseEntity like(@RequestBody Map<String, Integer> body) {

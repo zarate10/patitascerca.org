@@ -38,4 +38,8 @@ public class PostService {
         }
         return ResponseEntity.status(CREATED).build();
     }
+
+    public Post getPostById(Integer id) {
+        return pr.findById(id).orElse(null);
+    }
 }

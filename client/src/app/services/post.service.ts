@@ -20,4 +20,14 @@ export class PostService {
   get(): Observable<any> {
     return this.http.get("http://localhost:8080/post/all");
   }
+
+  like(postID: number, usuarioID: number) {
+    this.http.post("http://localhost:8080/likes/like", {postID, usuarioID}).subscribe(data => {
+      console.log(data);
+    }); 
+  }
+
+  getPostById(id: number): Observable<any> {
+    return this.http.get("http://localhost:8080/post/" + id);
+  }
 }

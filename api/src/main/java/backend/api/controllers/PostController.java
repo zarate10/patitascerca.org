@@ -13,6 +13,7 @@ import java.util.Map;
 @RequestMapping("post")
 @CrossOrigin(origins = "http://localhost:4200")
 public class PostController {
+    // devolver usuario DTO
     @Autowired
     private PostService postService;
 
@@ -29,5 +30,10 @@ public class PostController {
     @DeleteMapping("delete")
     public ResponseEntity create(@RequestBody Map<String, Integer> postID) {
         return postService.delete(postID.get("post_id"));
+    }
+
+    @GetMapping("{id}")
+    public Post getPostById(@PathVariable Integer id) {
+        return postService.getPostById(id);
     }
 }

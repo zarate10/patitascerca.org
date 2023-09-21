@@ -20,4 +20,6 @@
     <img [src]="post.imagen" [alt]="post.categoria" width="300" height="200">
     <br>
     <small>{{ post.ubicacion }}</small>
+    <button routerLink="/post/{{post.id}}">Detalles</button>
+    <button (click)="handleLike($event, post.id!)" >👍</button>
 </div>

@@ -1,3 +1,9 @@
 export interface IUsuario {
-    id: number; 
+    id?: number; 
+    username?: string; 
+    email?: string; 
+    telefono?: number; 
+    ciudad?: string; 
+    foto?: string; 
+    descripcion?: string; 
 }
