@@ -26,7 +26,8 @@ public class Usuario {
     private String ciudad;
     private String descripcion;
     private Date fechaRegistro;
-    private String foto;
+    @OneToOne
+    private Imagen foto;
     private int rango;
 
     @JsonIgnore
@@ -48,6 +49,7 @@ public class Usuario {
     @JsonIgnore
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Comentario> postCommented = new ArrayList<>();
+
 
     public UsuarioDTO toDTO() {
         UsuarioDTO dto = new UsuarioDTO();
