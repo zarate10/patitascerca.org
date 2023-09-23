@@ -19,4 +19,7 @@ Impacto social:
 
 *Patitas Cerca puede tener un impacto significativo al facilitar la búsqueda de animales perdidos y la adopción de animales en busca de un hogar. Además, al crear una comunidad en línea de amantes de los animales, se puede generar conciencia sobre temas de bienestar animal y promover prácticas responsables en la tenencia de mascotas. Esta plataforma puede convertirse en un recurso valioso para la comunidad local y más allá.*
 
-Equipo: Cañete, Andrés & Zarate, Lautaro. 
+### Authors
+
+- [@tdsandres](https://github.com/tdsandres) (Andrés Cañete)
+- [@zarate10](https://github.com/zarate10) (Lautaro Zarate)
