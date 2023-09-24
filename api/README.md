@@ -10,7 +10,7 @@ Los endpoints utilizables por la API están disponibles a través de Swagger, co
 Se diagramó un pequeño esquema el cual representa la relación entre los diferentes modelos en [Documentation](https://github.com/tdsandres/patitascerca.org/tree/main/api/doc)
 
 Conforme el proyecto avance, es posible que necesitemos realizar modificaciones en este archivo con el fin de detallar el contrato de cualquier endpoint que no esté explícitamente definido.
-
+ 
 ### Authors
 
 - [@tdsandres](https://github.com/tdsandres) (Andrés Cañete)
