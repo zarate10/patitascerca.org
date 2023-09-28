@@ -1,12 +1,12 @@
 package backend.api.models;
 
+import backend.api.DTO.PostDTO;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -30,7 +30,6 @@ public class Post {
     private String descripcion;
     private Date fecha;
     private String ubicacion;
-    private String imagen;
 
     @JsonIgnore
     @OneToMany(mappedBy = "post", cascade = CascadeType.ALL, orphanRemoval = true)
@@ -43,4 +42,15 @@ public class Post {
     @JsonIgnore
     @OneToMany(mappedBy = "post", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Imagen> imagenes;
+
+    public PostDTO toDTO() {
+        PostDTO dto = new PostDTO();
+        dto.id = this.id;
+        dto.categoria = this.categoria.toDTO();
+        dto.fecha = this.fecha;
+        dto.descripcion = this.descripcion;
+        dto.ubicacion = this.ubicacion;
+        dto.usuario = this.usuario.toDTO();
+        return dto;
+    }
 }

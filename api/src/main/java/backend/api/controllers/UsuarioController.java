@@ -23,23 +23,23 @@ public class UsuarioController {
     }
 
     @PostMapping("register")
-    public ResponseEntity create(@RequestBody Usuario user) {
+    public ResponseEntity<?> create(@RequestBody Usuario user) {
         return uservice.create(user);
     }
 
     @PostMapping("login")
-    public ResponseEntity login(@RequestBody Map<String, String> data){
+    public ResponseEntity<?> login(@RequestBody Map<String, String> data){
         return uservice.login(data);
     }
 
     @PutMapping("updateProfile")
-    public ResponseEntity updateProfile(@RequestBody Usuario user){return uservice.updateProfile(user);}
+    public ResponseEntity<?> updateProfile(@RequestBody Usuario user){return uservice.updateProfile(user);}
 
     @PatchMapping("updatePassword")
-    public ResponseEntity updatePassword(@RequestBody Map<String,String> data){return uservice.updatePassword(data);}
+    public ResponseEntity<?> updatePassword(@RequestBody Map<String,String> data){return uservice.updatePassword(data);}
 
     @DeleteMapping("delete/{id}")
-    public ResponseEntity delete(@PathVariable Integer id, @RequestBody Usuario u) {
+    public ResponseEntity<?> delete(@PathVariable Integer id, @RequestBody Usuario u) {
         return uservice.deleteUser(id, u);
     }
 }

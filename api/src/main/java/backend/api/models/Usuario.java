@@ -58,7 +58,7 @@ public class Usuario {
         dto.descripcion = this.descripcion;
         dto.email = this.email;
         dto.fechaRegistro = this.fechaRegistro.toString();
-        dto.foto = this.foto;
+        dto.foto = this.foto.getFilePath();
         dto.rango = this.rango;
         return dto;
     }

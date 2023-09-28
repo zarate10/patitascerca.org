@@ -16,7 +16,7 @@ public class UsuarioService {
     @Autowired
     private UsuarioRepository userRepository;
 
-    public ResponseEntity create(Usuario usuario) {
+    public ResponseEntity<?> create(Usuario usuario) {
         if(userRepository.ExistUsername(usuario.getUsername(), usuario.getEmail()) > 0) {
             return ResponseEntity.status(UNAUTHORIZED).build();
         }
@@ -47,7 +47,7 @@ public class UsuarioService {
             return ResponseEntity.status(INTERNAL_SERVER_ERROR).build();
         }
     }
-    public ResponseEntity updateProfile(Usuario user){
+    public ResponseEntity<?> updateProfile(Usuario user){
         try{
             Usuario newUser = userRepository.findById(user.getId()).get();
             newUser.setTelefono(user.getTelefono());
@@ -61,7 +61,7 @@ public class UsuarioService {
         }
     }
 
-    public ResponseEntity updatePassword(Map<String,String> data) {
+    public ResponseEntity<?> updatePassword(Map<String,String> data) {
         try {
             Integer id = Integer.parseInt(data.get("id"));
             Usuario user = userRepository.findById(id).get();
@@ -74,7 +74,7 @@ public class UsuarioService {
         return ResponseEntity.status(OK).build();
     }
 
-    public ResponseEntity deleteUser(Integer id, Usuario u){
+    public ResponseEntity<?> deleteUser(Integer id, Usuario u){
         // implementar borrado en cascada de las publicaciones, comentarios y likes
         try{
             if (u.getRango() < 3) {
