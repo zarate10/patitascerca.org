@@ -23,7 +23,7 @@ public class LikesService {
     @Autowired
     private UsuarioRepository ur;
 
-    public ResponseEntity like(Integer postID, Integer usuarioID){
+    public ResponseEntity<?> like(Integer postID, Integer usuarioID){
         try {
             Likes l = new Likes();
             pr.findById(postID).ifPresent(post -> l.setPost(post));

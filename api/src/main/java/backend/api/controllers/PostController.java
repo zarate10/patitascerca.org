@@ -1,5 +1,6 @@
 package backend.api.controllers;
 
+import backend.api.DTO.PostDTO;
 import backend.api.models.Post;
 import backend.api.services.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,27 +14,26 @@ import java.util.Map;
 @RequestMapping("post")
 @CrossOrigin(origins = "http://localhost:4200")
 public class PostController {
-    // devolver usuario DTO
     @Autowired
     private PostService postService;
 
     @GetMapping("all")
-    public List<Post> get() {
+    public List<PostDTO> get() {
         return postService.getAll();
     }
 
     @PostMapping("create")
-    public ResponseEntity create(@RequestBody Post p) {
+    public ResponseEntity<?> create(@RequestBody Post p) {
         return postService.create(p);
     }
 
     @DeleteMapping("delete")
-    public ResponseEntity create(@RequestBody Map<String, Integer> postID) {
+    public ResponseEntity<?> delet(@RequestBody Map<String, Integer> postID) {
         return postService.delete(postID.get("post_id"));
     }
 
     @GetMapping("{id}")
-    public Post getPostById(@PathVariable Integer id) {
+    public PostDTO getPostById(@PathVariable Integer id) {
         return postService.getPostById(id);
     }
 }

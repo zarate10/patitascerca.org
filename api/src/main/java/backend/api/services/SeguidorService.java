@@ -28,7 +28,7 @@ public class SeguidorService {
         return usersDTO;
     }
 
-    public ResponseEntity seguir(Map<String, Usuario> nuevaRelacion) {
+    public ResponseEntity<?> seguir(Map<String, Usuario> nuevaRelacion) {
         int seguidorID = nuevaRelacion.get("seguidor").getId();
         int seguidoID = nuevaRelacion.get("seguido").getId();
         try {

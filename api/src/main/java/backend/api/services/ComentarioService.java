@@ -16,7 +16,7 @@ public class ComentarioService {
     private ComentarioRepository cr;
 
 
-    public ResponseEntity comentar(Comentario c) {
+    public ResponseEntity<?> comentar(Comentario c) {
         try {
             cr.save(c);
             return ResponseEntity.status(CREATED).build();
@@ -25,7 +25,7 @@ public class ComentarioService {
         }
     }
 
-    public ResponseEntity delete(Integer comentarioID) {
+    public ResponseEntity<?> delete(Integer comentarioID) {
         try {
             cr.findById(comentarioID).ifPresent(comentario -> cr.delete(comentario));
 

@@ -8,6 +8,6 @@ public class UsuarioDTO {
     public String email;
     public String descripcion;
     public String fechaRegistro;
-    public Imagen foto;
+    public String foto;
     public int rango;
 }

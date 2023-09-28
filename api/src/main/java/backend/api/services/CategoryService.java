@@ -21,7 +21,7 @@ public class CategoryService {
     @Autowired
     private UsuarioRepository usuarioRepository;
 
-    public ResponseEntity create(Category c) {
+    public ResponseEntity<?> create(Category c) {
         try {
             categoryRepository.save(c);
         } catch (Exception e) {
@@ -30,7 +30,7 @@ public class CategoryService {
         return ResponseEntity.status(CREATED).build();
     }
 
-    public ResponseEntity delete(int id, int user_id) {
+    public ResponseEntity<?> delete(int id, int user_id) {
         try {
             Usuario usuario = usuarioRepository.findById(user_id).orElse(null);
 
