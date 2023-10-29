@@ -1,0 +1,32 @@
+<app-wrapper-app>
+    <div class="top-home gradient-background">
+
+        <div class="left" (click)="logout()">
+            <boximg [userImg]="user.foto" [alt]="user.username" />
+            <p class="atuser">@{{user.username}}</p>
+            <p class="logout">LOGOUT</p>
+        </div>
+        <img src="assets/IMAGOTIPO.png" width="50" alt="LOGO">
+
+    </div>
+    <div class="add-post-wrapper">
+
+        <form #formPublicacion="ngForm" (ngSubmit)="onSubmitCreatePost(formPublicacion.value)">  
+            <div class="parte-top-post">
+                <input type="text" name="ubicacion" placeholder="Ubicación" ngModel>
+                <select name="categoria" ngModel>
+                    <option [value]="c.id" *ngFor="let c of categories">{{ c.title }}</option>
+                </select>
+            </div>
+            <textarea name="descripcion" rows="5" ngModel placeholder="Detallá el motivo de tu posteo."></textarea>
+            <div class="parte-bottom-post">
+                <input type="text" name="imagen" placeholder="URL IMAGEN" ngModel>
+                <button class="btn-1">Publicar</button>
+            </div>
+        </form>
+        
+    </div>
+
+    <home-post *ngFor="let p of posteos" [post]="p" [user]="user" />
+
+</app-wrapper-app>

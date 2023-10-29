@@ -1,0 +1,12 @@
+.box-img-profile {
+    width: 55px;
+    height: 55px;
+}
+
+.box-img-profile > img {
+    object-fit: cover;
+    object-position: 50% 50%;
+    width: 100%;
+    border-radius: 500px;
+    height: 100%;
+}

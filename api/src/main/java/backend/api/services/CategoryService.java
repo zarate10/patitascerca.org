@@ -47,11 +47,15 @@ public class CategoryService {
 
     public List<CategoryDTO> getAll() {
         List<CategoryDTO> categorias = new ArrayList<>();
+        try {
 
-        for(Category c : categoryRepository.findAll()) {
-            categorias.add(c.toDTO());
+            for(Category c : categoryRepository.findAll()) {
+                categorias.add(c.toDTO());
+            }
+
+            return categorias;
+        } catch (Exception e) {
+            throw new RuntimeException("Error al obtener las categorías", e);
         }
-
-        return categorias;
     }
 }

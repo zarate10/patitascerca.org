@@ -30,6 +30,7 @@ public class Post {
     private String descripcion;
     private Date fecha;
     private String ubicacion;
+    private String imagen;
 
     @JsonIgnore
     @OneToMany(mappedBy = "post", cascade = CascadeType.ALL, orphanRemoval = true)
@@ -39,15 +40,12 @@ public class Post {
     @OneToMany(mappedBy = "post", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Comentario> comentarios;
 
-    @JsonIgnore
-    @OneToMany(mappedBy = "post", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Imagen> imagenes;
-
     public PostDTO toDTO() {
         PostDTO dto = new PostDTO();
         dto.id = this.id;
         dto.categoria = this.categoria.toDTO();
         dto.fecha = this.fecha;
+        dto.imagen = this.imagen;
         dto.descripcion = this.descripcion;
         dto.ubicacion = this.ubicacion;
         dto.usuario = this.usuario.toDTO();

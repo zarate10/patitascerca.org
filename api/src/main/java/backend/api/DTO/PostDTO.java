@@ -10,4 +10,5 @@ public class PostDTO {
     public String descripcion;
     public Date fecha;
     public String ubicacion;
+    public String imagen;
 }

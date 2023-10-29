@@ -1,2 +1,66 @@
 /* You can add global styles to this file, and also import other style files */
- 
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+:root {
+    --gris: rgba(128, 128, 128, 0.349);
+    --m1: #529498;
+    --m2: #80fad9;
+    --m1d: #414a4b;
+    --lm: rgba(176, 255, 231, 0.24);
+    --lm2:rgba(235, 174, 5, 0.11);
+    --lm3:rgba(128, 223, 236, 0.24);
+}
+/* ---------- INPUT */
+input, textarea, select {
+    padding: 8px 10px;
+    border: 1.5px solid var(--gris);
+    border-radius: 5px;
+    resize: none;
+}
+
+input:focus, textarea:focus, select:focus {
+    outline: none;
+    border: 1.5px solid var(--m1);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+/* ---------- BUTTONS */
+.abutton { 
+    text-decoration-line: underline;
+    text-decoration-style: wavy;
+    text-decoration-color: var(--m2);
+}
+button {
+    border: none;
+    background: none;
+    border: 1px solid transparent;
+    cursor: pointer;
+}
+button:focus { 
+    outline: none;
+    border: 1px solid var(--m2);
+}
+.btn-1 {
+    background: var(--m1);
+    padding: 8px;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    transition: .5s;
+}
+.btn-1:hover { 
+    background: var(--m2);
+    transition: .5s;
+    color: var(--m1d);
+}

@@ -20,12 +20,16 @@ public class PostService {
     private PostRepository pr;
 
     public List<PostDTO> getAll() {
-        List<PostDTO> dto = new ArrayList<>();
+        try {
+            List<PostDTO> dto = new ArrayList<>();
 
-        for(Post p: pr.findAll()) {
-            dto.add(p.toDTO());
+            for(Post p: pr.getAllPostsOrdenados()) {
+                dto.add(p.toDTO());
+            }
+            return dto;
+        } catch (Exception e) {
+            throw new RuntimeException("Error al obtener los posteos", e);
         }
-        return dto;
     }
 
     public ResponseEntity<?> create(Post p) {
@@ -48,7 +52,10 @@ public class PostService {
     }
 
     public PostDTO getPostById(Integer id) {
-        PostDTO dto = Objects.requireNonNull(pr.findById(id).orElse(null)).toDTO();
-        return dto;
+        try {
+            return Objects.requireNonNull(pr.findById(id).orElse(null)).toDTO();
+        } catch (Exception e) {
+            throw new RuntimeException("Error al obtener un POST", e);
+        }
     }
 }

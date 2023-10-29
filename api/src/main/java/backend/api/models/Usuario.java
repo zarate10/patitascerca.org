@@ -26,8 +26,8 @@ public class Usuario {
     private String ciudad;
     private String descripcion;
     private Date fechaRegistro;
-    @OneToOne
-    private Imagen foto;
+    private String foto;
+
     private int rango;
 
     @JsonIgnore
@@ -58,7 +58,7 @@ public class Usuario {
         dto.descripcion = this.descripcion;
         dto.email = this.email;
         dto.fechaRegistro = this.fechaRegistro.toString();
-        dto.foto = this.foto.getFilePath();
+        dto.foto = this.foto;
         dto.rango = this.rango;
         return dto;
     }

@@ -17,25 +17,29 @@ public class UsuarioService {
     private UsuarioRepository userRepository;
 
     public ResponseEntity<?> create(Usuario usuario) {
-        if(userRepository.ExistUsername(usuario.getUsername(), usuario.getEmail()) > 0) {
-            return ResponseEntity.status(UNAUTHORIZED).build();
-        }
         try {
+            if(userRepository.existUsername(usuario.getUsername(), usuario.getEmail()) > 0) {
+                return ResponseEntity.status(UNAUTHORIZED).build();
+            }
+
             usuario.setRango(0);
             usuario.setFechaRegistro(new Date());
             userRepository.save(usuario);
         } catch (Exception e) {
             return ResponseEntity.status(INTERNAL_SERVER_ERROR).build();
         }
-        return ResponseEntity.status(CREATED).build();
+        return ResponseEntity.status(CREATED).body(usuario);
     }
 
     public ResponseEntity<UsuarioDTO> login(Map<String, String> data){
         try{
+
             Integer user_id = userRepository.findIdByUsername(data.get("username"));
+
             if (user_id != null)
             {
                 Usuario usuario = userRepository.findById(user_id).orElse(null);
+
                 if(usuario == null || !usuario.getPassword().equals(data.get("password")))
                 {
                     return ResponseEntity.status(UNAUTHORIZED).build();
@@ -44,9 +48,11 @@ public class UsuarioService {
             }
             return ResponseEntity.status(UNAUTHORIZED).build();
         } catch (Exception e){
+            System.out.println(e);
             return ResponseEntity.status(INTERNAL_SERVER_ERROR).build();
         }
     }
+
     public ResponseEntity<?> updateProfile(Usuario user){
         try{
             Usuario newUser = userRepository.findById(user.getId()).get();
@@ -75,7 +81,6 @@ public class UsuarioService {
     }
 
     public ResponseEntity<?> deleteUser(Integer id, Usuario u){
-        // implementar borrado en cascada de las publicaciones, comentarios y likes
         try{
             if (u.getRango() < 3) {
                 return ResponseEntity.status(UNAUTHORIZED).build();
@@ -94,11 +99,14 @@ public class UsuarioService {
     }
 
    public List<UsuarioDTO> getAll () {
-        List<UsuarioDTO> usersDTO = new ArrayList<>();
-        for (Usuario u : userRepository.findAll()) {
-            usersDTO.add(u.toDTO());
+        try {
+            List<UsuarioDTO> usersDTO = new ArrayList<>();
+            for (Usuario u : userRepository.findAll()) {
+                usersDTO.add(u.toDTO());
+            }
+            return usersDTO;
+        } catch (Exception e) {
+            throw new RuntimeException("Error al obtener los usuarios", e);
         }
-        return usersDTO;
      }
-
 }

@@ -1,7 +1,5 @@
 package backend.api.DTO;
 
-import backend.api.models.Imagen;
-
 public class UsuarioDTO {
     public int id;
     public String username;

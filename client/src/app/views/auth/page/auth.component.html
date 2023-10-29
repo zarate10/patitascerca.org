@@ -1,0 +1,36 @@
+<app-wrapper-app>
+    <div class="box-auth" *ngIf="isLoginScreen">
+        <form #formLogin="ngForm" (ngSubmit)="onSubmitLogin(formLogin.value)">
+            <br>
+            <h2>¡Hola! 👋</h2>
+            <p>Bienvenido de nuevo.</p>
+            <br>
+            <small>
+                Inicie sesión o
+                <button class="abutton" (click)="changeScreen()">regístrese</button>
+            </small>
+            <input type="text" name="username" placeholder="Usuario" ngModel>
+            <input type="text" name="password" placeholder="Contraseña" ngModel>
+            <button class="btn-1">Ingresar</button>
+        </form>
+    </div>
+
+    <div class="box-auth" *ngIf="!isLoginScreen">
+        <form #formRegister="ngForm" (ngSubmit)="onSubmitRegister(formRegister.value)">
+            <br>
+            <h2>¡Bienvenido! 👋</h2>
+            <p>Complete el formulario para registrarse.</p>
+            <br>
+            <input type="text" name="username"  placeholder="Usuario" ngModel>
+            <input type="text" name="password" placeholder="Contraseña" ngModel>
+            <input type="email" name="email" placeholder="Correo electrónico" ngModel>
+            <input type="text" name="telefono" placeholder="Celular" ngModel>
+            <input type="text" name="ciudad" placeholder="Localización" ngModel>
+            <input type="text" name="foto" placeholder="URL IMAGEN" ngModel>
+            <button class="btn-1">Registrarse</button>
+            <small>
+                <button class="abutton" (click)="changeScreen()">¿Ya tiene una cuenta?</button>
+            </small>
+        </form>
+    </div>
+</app-wrapper-app>
