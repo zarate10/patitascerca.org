@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { IUserLogin } from 'src/app/core/interfaces/IUserLogin';
-import { IUserRegister } from 'src/app/core/interfaces/IUserRegister';
+import { IUserLogin } from 'src/app/models/IUserLogin';
+import { IUserRegister } from 'src/app/models/IUserRegister';
 
 @Injectable({
     providedIn: 'root'

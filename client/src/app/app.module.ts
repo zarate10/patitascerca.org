@@ -7,12 +7,12 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { AuthComponent } from './views/auth/page/auth.component';
-import { WrapperAppComponent } from './shared/components/wrapper-app/wrapper-app.component';
+import { AuthComponent } from './views/auth/auth.component';
+import { WrapperAppComponent } from './components/wrapper-app/wrapper-app.component';
 import { ToastrModule } from 'ngx-toastr';
-import { HomeComponent } from './views/home/page/home.component';
-import { BoxImgProfileComponent } from './shared/components/box-img-profile/box-img-profile.component';
-import { PostComponent } from './views/home/components/post/post.component';
+import { HomeComponent } from './views/home/home.component';
+import { BoxImgProfileComponent } from './components/box-img-profile/box-img-profile.component';
+import { PostComponent } from './components/post/post.component';
 
 @NgModule({
   declarations: [

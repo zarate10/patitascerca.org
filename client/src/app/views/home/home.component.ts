@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { ICategory } from 'src/app/core/interfaces/ICategory';
-import { IUser } from 'src/app/core/interfaces/IUser';
-import { CategoryService } from '../services/category/category.service';
-import { PostService } from '../services/posts/post.service';
+import { ICategory } from 'src/app/models/ICategory';
+import { IUser } from 'src/app/models/IUser';
+import { CategoryService } from '../../services/category.service';
+import { PostService } from '../../services/post.service';
 import { ToastrService } from 'ngx-toastr';
-import { IPost } from 'src/app/core/interfaces/IPost';
+import { IPost } from 'src/app/models/IPost';
 
 @Component({
     selector: 'app-home',

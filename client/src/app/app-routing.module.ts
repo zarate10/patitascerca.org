@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
-import { AuthComponent } from './views/auth/page/auth.component';
-import { HomeComponent } from './views/home/page/home.component';
+import { AuthComponent } from './views/auth/auth.component';
+import { HomeComponent } from './views/home/home.component';
 
 
 const routes: Routes = [

@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { IUserRegister } from 'src/app/core/interfaces/IUserRegister';
-import { AuthService } from '../services/auth.service';
+import { IUserRegister } from 'src/app/models/IUserRegister';
+import { AuthService } from '../../services/auth.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
-import { IUserLogin } from 'src/app/core/interfaces/IUserLogin';
+import { IUserLogin } from 'src/app/models/IUserLogin';
 
 @Component({
     selector: 'app-auth',

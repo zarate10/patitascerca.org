@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
-import { IPost } from 'src/app/core/interfaces/IPost';
-import { IUser } from 'src/app/core/interfaces/IUser';
+import { IPost } from 'src/app/models/IPost';
+import { IUser } from 'src/app/models/IUser';
 
 @Component({
     selector: 'home-post',
