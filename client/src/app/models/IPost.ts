@@ -9,4 +9,7 @@ export interface IPost {
     fecha: Date;
     ubicacion: string; 
     imagen: string; 
+    totalLikes: number; 
+    totalComentarios: number;
+    isLiked: boolean; 
 }

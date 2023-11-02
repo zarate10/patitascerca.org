@@ -11,4 +11,6 @@ public class PostDTO {
     public Date fecha;
     public String ubicacion;
     public String imagen;
+    public int totalLikes = 0;
+    public int totalComentarios = 0;
 }

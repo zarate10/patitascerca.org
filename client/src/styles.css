@@ -10,12 +10,16 @@
 
 :root {
     --gris: rgba(128, 128, 128, 0.349);
+    --m0: rgb(223, 255, 240);
     --m1: #529498;
     --m2: #80fad9;
     --m1d: #414a4b;
     --lm: rgba(176, 255, 231, 0.24);
     --lm2:rgba(235, 174, 5, 0.11);
     --lm3:rgba(128, 223, 236, 0.24);
+}
+body {
+    padding-bottom: 8vh;
 }
 /* ---------- INPUT */
 input, textarea, select {
@@ -63,4 +67,35 @@ button:focus {
     background: var(--m2);
     transition: .5s;
     color: var(--m1d);
+}
+
+.custom-modal {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    left: 0;
+    top: 0;
+    position: fixed;
+    z-index: 10000;
+    backdrop-filter: blur(3px);
+}
+.modal-dialog {
+    background: white;
+    padding: 2rem;
+    width: 450px;
+    border-radius: 10px;
+}
+
+.modal-enter {
+    transform: scale(1);
+    opacity: 1;
+    transition: transform 0.3s, opacity 0.3s 0.2s;
+}
+
+.modal-exit {
+    transform: scale(0);
+    opacity: 0;
+    transition: transform 0.3s, opacity 0.1s 0.2s;
 }

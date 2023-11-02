@@ -1,15 +1,15 @@
 package backend.api.services;
 
 import backend.api.models.Likes;
-import backend.api.models.Post;
-import backend.api.models.Seguidor;
-import backend.api.models.Usuario;
 import backend.api.repositories.LikesRepository;
 import backend.api.repositories.PostRepository;
 import backend.api.repositories.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.springframework.http.HttpStatus.INTERNAL_SERVER_ERROR;
 import static org.springframework.http.HttpStatus.OK;
@@ -40,6 +40,22 @@ public class LikesService {
             return ResponseEntity.status(OK).build();
         } catch (Exception e) {
             return ResponseEntity.status(INTERNAL_SERVER_ERROR).build();
+        }
+    }
+
+    public Integer getCountLikesByPostId(Integer postId) {
+        try {
+            return lr.countLikesByPostId(postId);
+        } catch (Exception e) {
+            return -1;
+        }
+    }
+
+    public List<Integer> getPostLikedByUser(Integer userId) {
+        try {
+            return lr.getPostLikedByUser(userId);
+        } catch (Exception e) {
+            return new ArrayList<>();
         }
     }
 }

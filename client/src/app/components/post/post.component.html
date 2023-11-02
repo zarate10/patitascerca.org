@@ -1,4 +1,4 @@
-<div class="post">
+<div class="post" (click)="openPostDetail(post)">
     <div class="left">
         <boximg [userImg]="post.usuario.foto ? post.usuario.foto : 'assets/IMAGOTIPO_256.png'" [alt]="post.usuario.username"></boximg>
     </div>
@@ -6,17 +6,65 @@
         <div class="top">
             <p class="txt-top-post">
                 {{ post.usuario.username }} 
-                <button *ngIf="post.usuario.id == user.id" (click)="deletePost(post.id)">x</button>
+                <span class="right-post">
+                    <button *ngIf="post.usuario.id == user.id" (click)="editPost(post)"><i class="fa-regular fa-pen-to-square"></i></button>
+                    <button *ngIf="post.usuario.id == user.id" (click)="deletePost(post.id)">x</button>
+                </span>
             </p>
             <div class="tags">
-                <small><b><i class="fa-solid fa-location-dot"></i></b> {{ post.ubicacion }}</small>
-                <small><b><i class="fa-solid fa-wand-magic-sparkles"></i></b> {{ post.categoria.title }}</small>
+                <small><b><i class="fa-solid fa-location-dot"></i></b> {{ postToUpdate.ubicacion || post.ubicacion }}</small>
+                <small><b><i class="fa-solid fa-wand-magic-sparkles"></i></b> {{ postToUpdate.categoria.title || post.categoria.title }}</small>
             </div>
         </div>
         <div class="info">
-            <p>{{ post.descripcion }}</p>
+            <p>{{ postToUpdate.descripcion || post.descripcion}}</p>
             <div class="box-img-post" *ngIf="post.imagen !== ''">
-                <img [src]="post.imagen" [alt]="post.descripcion">
+                <img [src]="postToUpdate.imagen || post.imagen" [alt]="post.descripcion">
+            </div>
+        </div>
+        <div class="box-info-comments">
+            <div class="left-ic">
+                <button class="btn-like" (click)="likePost(post, user.id)" [ngStyle]="{'color': isLiked ? 'red' : 'rgb(160, 160, 160)'}">
+                    <i [class]="isLiked ? 'fa-solid fa-heart' : 'fa-regular fa-heart'"></i>
+                    <span>{{ post.totalLikes }}</span>
+                </button>
+                <!-- <button>
+                    <i class="fa-regular fa-comment"></i>
+                    <span>{{ post.totalComentarios }}</span>
+                </button> -->
+            </div>
+            <div class="right-ic">
+                <small>
+                    {{ post.fecha.toString().split('T')[0] + " - " + post.fecha.toString().split('T')[1].split('.')[0] }}
+                </small>
+            </div>
+        </div>
+    </div>
+
+    <div class="custom-modal" [ngClass]="{'modal-enter': isModalOpen, 'modal-exit': !isModalOpen}">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Actualizar publicación</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="setModal(post)"></button>
+                </div>
+                <div class="modal-body">
+                    <br>
+                    <form #formUpdatePublicacion="ngForm" (ngSubmit)="onSubmitUpdate(formUpdatePublicacion)">
+                        <div class="parte-top-post">
+                            <input type="text" name="ubicacion" placeholder="Ubicación" autocomplete="off" [(ngModel)]="postToUpdate.ubicacion">
+                            <select name="categoria" [(ngModel)]="postToUpdate.categoria">
+                                <option [ngValue]="c" *ngFor="let c of categories">{{ c.title }}</option>
+                            </select>
+                        </div>
+                        <textarea name="descripcion" rows="5" [(ngModel)]="postToUpdate.descripcion"
+                            placeholder="Detallá el motivo de tu posteo."></textarea>
+                        <div class="parte-bottom-post">
+                            <input type="text" name="imagen" placeholder="URL IMAGEN" autocomplete="off" [(ngModel)]="postToUpdate.imagen">
+                            <button class="btn-1">Editar</button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>

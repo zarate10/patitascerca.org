@@ -1,32 +1,66 @@
 <app-wrapper-app>
-    <div class="top-home gradient-background">
 
-        <div class="left" (click)="logout()">
+    <div class="top-home">
+        <div class="container-logout" (click)="logout()">
             <boximg [userImg]="user.foto" [alt]="user.username" />
-            <p class="atuser">@{{user.username}}</p>
-            <p class="logout">LOGOUT</p>
+            <div class="box-logout">X</div>
         </div>
-        <img src="assets/IMAGOTIPO.png" width="50" alt="LOGO">
-
+        <h4><b>Home</b></h4>
     </div>
+
+
     <div class="add-post-wrapper">
+        <boximg [userImg]="user.foto" [alt]="user.username" />
+        <button class="input-btn" (click)="setModalNewPost()">¿Estás en búsqueda de tu amigo, {{ user.username
+            }}?</button>
 
-        <form #formPublicacion="ngForm" (ngSubmit)="onSubmitCreatePost(formPublicacion.value)">  
-            <div class="parte-top-post">
-                <input type="text" name="ubicacion" placeholder="Ubicación" ngModel>
-                <select name="categoria" ngModel>
-                    <option [value]="c.id" *ngFor="let c of categories">{{ c.title }}</option>
-                </select>
+        <div class="custom-modal" [ngClass]="{'modal-enter': isModalOpen, 'modal-exit': !isModalOpen}">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Crear publicación</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                            (click)="setModalNewPost()"></button>
+                    </div>
+                    <div class="modal-body">
+                        <br>
+                        <form #formPublicacion="ngForm" (ngSubmit)="onSubmitCreatePost(formPublicacion)">
+                            <div class="parte-top-post">
+                                <input type="text" name="ubicacion" placeholder="Ubicación" autocomplete="off" ngModel>
+                                <select name="categoria" ngModel>
+                                    <option [value]="c.id" *ngFor="let c of categories">{{ c.title }}</option>
+                                </select>
+                            </div>
+                            <textarea name="descripcion" rows="5" ngModel
+                                placeholder="Detallá el motivo de tu posteo."></textarea>
+                            <div class="parte-bottom-post">
+                                <input type="text" name="imagen" placeholder="URL IMAGEN" autocomplete="off" ngModel>
+                                <button class="btn-1">Publicar</button>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
             </div>
-            <textarea name="descripcion" rows="5" ngModel placeholder="Detallá el motivo de tu posteo."></textarea>
-            <div class="parte-bottom-post">
-                <input type="text" name="imagen" placeholder="URL IMAGEN" ngModel>
-                <button class="btn-1">Publicar</button>
-            </div>
-        </form>
-        
+        </div>
+
     </div>
 
-    <home-post *ngFor="let p of posteos" [post]="p" [user]="user" />
+    <div class="container mb-4">
+        <h5>Filtrar por...</h5>
+    </div>
 
+    <div class="container wrapper-filters">
+        <app-button-filter textBtn="encontradas" [color]="'#B2F3D4'"></app-button-filter>
+        <app-button-filter textBtn="en búsqueda" [color]="'#93ECF2'"></app-button-filter>
+        <app-button-filter textBtn="en adopción" [color]="'#AE88FF'"></app-button-filter>
+    </div>
+
+    <div class="container mt-5 mb-4">
+        <h5>Reciente</h5>
+    </div>
+
+    <home-post *ngFor="let p of posteos" [post]="p" [user]="user" (deletePostFunction)="deletePost($event)"
+        [categories]="categories" />
+    
 </app-wrapper-app>

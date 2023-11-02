@@ -8,6 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.springframework.http.HttpStatus.*;
 
 @Service
@@ -32,6 +35,22 @@ public class ComentarioService {
             return ResponseEntity.status(OK).build();
         } catch (Exception e) {
             return ResponseEntity.status(INTERNAL_SERVER_ERROR).build();
+        }
+    }
+
+    public Integer getCountComentariosByPostId(Integer postId) {
+        try {
+            return cr.countComentariosByPostId(postId);
+        } catch (Exception e) {
+            return -1;
+        }
+    }
+
+    public List<?> getByPostId(Integer postId) {
+        try {
+            return cr.getComentariosByPost(postId);
+        } catch (Exception e) {
+            return new ArrayList<>();
         }
     }
 }

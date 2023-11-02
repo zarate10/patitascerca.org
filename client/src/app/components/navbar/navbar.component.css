@@ -1,0 +1,33 @@
+.box-navbar { 
+    width: 100%;
+    height: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    bottom: 0;
+
+}
+.box-buttons-nav { 
+    height: 55px;
+    background: rgba(38, 83, 20, 0.212);
+    border-radius: 100px;
+    margin-bottom: 100px;
+    backdrop-filter: blur(3px);
+    padding: 1rem 2rem;
+    display: flex;
+    align-items: center;
+
+}
+.box-buttons-nav > button { 
+    width: 50px;
+    height: 50px;
+    color: rgb(255, 255, 255);
+    transition: .3s;
+    opacity: 0.9;
+}
+.box-buttons-nav > button:hover {
+    transform: scale(1.3);
+    transition: .3s;
+    opacity: 1;
+}

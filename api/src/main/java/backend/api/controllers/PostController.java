@@ -8,7 +8,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Map;
 
 @RestController
 @RequestMapping("post")
@@ -27,9 +26,14 @@ public class PostController {
         return postService.create(p);
     }
 
-    @DeleteMapping("delete")
-    public ResponseEntity<?> delet(@RequestBody Map<String, Integer> postID) {
-        return postService.delete(postID.get("post_id"));
+    @PostMapping("update")
+    public ResponseEntity<?> update(@RequestBody Post p) {
+        return postService.updatePost(p);
+    }
+
+    @DeleteMapping("delete/{postID}")
+    public ResponseEntity<?> delet(@PathVariable Integer postID) {
+        return postService.delete(postID);
     }
 
     @GetMapping("{id}")

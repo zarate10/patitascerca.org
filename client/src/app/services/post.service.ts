@@ -18,4 +18,12 @@ export class PostService {
     getAll(): Observable<any> {
         return this.http.get<IPost[]>(this.url + '/post/all'); 
     }
+
+    delete(postID: number): Observable<any> {
+        return this.http.delete(this.url + '/post/delete/' + postID); 
+    }
+
+    update(form: any): Observable<any> {
+        return this.http.post('http://localhost:8080/post/update', form);
+    }
 }

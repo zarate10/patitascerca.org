@@ -1,11 +1,8 @@
 .top-home {
     width: 100%;
-    height: 120px;
-
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background: var(--lm);
     border-radius: 1rem;
     padding: 0 2rem;
 }
@@ -31,22 +28,31 @@
     visibility: visible;
 }
 
-.gradient-background {
-    background: linear-gradient(300deg, var(--lm), var(--lm2), var(--lm3));
-    background-size: 180% 180%;
-    animation: gradient-animation 18s ease infinite;
-}
-
 .add-post-wrapper { 
     width: 100%;
-    padding: 2rem;
-    border-radius: 1rem;
-    margin-top: 1rem;
-    background: rgba(129, 240, 212, 0.089);
+    padding: 1.3rem 2rem;
+    border-radius: 10px;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    background: var(--m0);
+    display: flex; 
+    align-items: center;
+     gap: 30px;
 }
 .add-post-wrapper > textarea { 
     resize: none;
 }
+
+.add-post-wrapper > .input-btn { 
+    width: 100%;
+    border-radius: 100px;
+    padding: 8px 25px;
+    font-size: 0.85em;
+    color: var(--gris);
+    background: white;
+    text-align: left;
+}
+
 
 .parte-top-post { 
     width: 100%;
@@ -74,16 +80,57 @@
     width: 60%;
 }
 
-@keyframes gradient-animation {
+.container-logout {
+    position: relative;
+    width: 55px;
+    height: 55px;
+}
+.container-logout:hover .box-logout { 
+    display: flex;
+}
+.container-logout > .box-logout { 
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 0, 0, 0.425);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    border-radius: 100%;
+    color: white;
+    cursor: pointer;
+    display: none;
+    backdrop-filter: blur(1px);
+    animation: .3s nofalla ease;
+}
+
+@keyframes nofalla {
     0% {
-        background-position: 0% 50%;
+        opacity: 0;
     }
-
-    50% {
-        background-position: 100% 50%;
-    }
-
     100% {
-        background-position: 0% 50%;
+        opacity: 1;
     }
+}
+
+.wrapper-filters {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0;
+    width: 100%;
+    gap: 10px 15px;
+}
+@media (max-width: 995px) {
+    .wrapper-filters { 
+        flex-direction: column;
+
+    }
+}
+.container > h5 {
+    text-decoration-line: underline;
+    text-decoration-style: wavy;
+    text-decoration-color: var(--m2);
 }

@@ -18,13 +18,23 @@ import static org.springframework.http.HttpStatus.*;
 public class PostService {
     @Autowired
     private PostRepository pr;
+    @Autowired
+    private LikesService likesService;
+    @Autowired
+    private ComentarioService comentarioService;
 
     public List<PostDTO> getAll() {
         try {
             List<PostDTO> dto = new ArrayList<>();
 
             for(Post p: pr.getAllPostsOrdenados()) {
-                dto.add(p.toDTO());
+                int idPosteo = p.getId();
+
+                PostDTO post = p.toDTO();
+
+                post.totalComentarios = comentarioService.getCountComentariosByPostId(idPosteo);
+                post.totalLikes = likesService.getCountLikesByPostId(idPosteo);
+                dto.add(post);
             }
             return dto;
         } catch (Exception e) {
@@ -40,6 +50,25 @@ public class PostService {
             return ResponseEntity.status(INTERNAL_SERVER_ERROR).build();
         }
         return ResponseEntity.status(CREATED).build();
+    }
+
+    public ResponseEntity<?> updatePost(Post updatedPost) {
+        try {
+            Post existingPost = pr.findById(updatedPost.getId()).orElse(null);
+
+            assert existingPost != null;
+
+            existingPost.setCategoria(updatedPost.getCategoria());
+            existingPost.setDescripcion(updatedPost.getDescripcion());
+            existingPost.setUbicacion(updatedPost.getUbicacion());
+            existingPost.setImagen(updatedPost.getImagen());
+
+            pr.save(existingPost);
+
+            return ResponseEntity.status(CREATED).build();
+        } catch (Exception e) {
+            return ResponseEntity.status(INTERNAL_SERVER_ERROR).build();
+        }
     }
 
     public ResponseEntity<?> delete(int postID) {

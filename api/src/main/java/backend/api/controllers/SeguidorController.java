@@ -12,6 +12,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("follows")
+@CrossOrigin(origins = "http://localhost:4200")
 public class SeguidorController {
     @Autowired
     private SeguidorService seguidorService;

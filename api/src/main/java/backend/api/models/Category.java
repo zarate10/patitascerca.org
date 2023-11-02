@@ -20,8 +20,8 @@ public class Category {
     private Integer id;
     private String title;
 
-    @JsonIgnore
     @OneToMany(mappedBy = "categoria", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnore
     private List<Post> posts = new ArrayList<>();
 
     public CategoryDTO toDTO() {
