@@ -14,7 +14,6 @@ import { HomeComponent } from './views/home/home.component';
 import { BoxImgProfileComponent } from './components/box-img-profile/box-img-profile.component';
 import { PostComponent } from './components/post/post.component';
 import { ButtonFilterComponent } from './components/button-filter/button-filter.component';
-import { NavbarComponent } from './components/navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +24,6 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     BoxImgProfileComponent,
     PostComponent,
     ButtonFilterComponent,
-    NavbarComponent,
   ],
   imports: [
     BrowserModule, 
