@@ -14,4 +14,8 @@ export class CommentsService {
     getCommentsByPost(id: number): Observable<any> {
         return this.http.get(this.url + '/comments/' + id); 
     }
+
+    toComment(data: any): Observable<any> {
+        return this.http.post(this.url + '/comments/create', data); 
+    }
 }

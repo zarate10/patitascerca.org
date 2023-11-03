@@ -1,4 +1,4 @@
-<div class="post" (click)="openPostDetail(post)">
+<div class="post">
     <div class="left">
         <boximg [userImg]="post.usuario.foto ? post.usuario.foto : 'assets/IMAGOTIPO_256.png'" [alt]="post.usuario.username"></boximg>
     </div>
@@ -28,10 +28,10 @@
                     <i [class]="isLiked ? 'fa-solid fa-heart' : 'fa-regular fa-heart'"></i>
                     <span>{{ post.totalLikes }}</span>
                 </button>
-                <!-- <button>
+                <button (click)="openComments(post)">
                     <i class="fa-regular fa-comment"></i>
                     <span>{{ post.totalComentarios }}</span>
-                </button> -->
+                </button>
             </div>
             <div class="right-ic">
                 <small>

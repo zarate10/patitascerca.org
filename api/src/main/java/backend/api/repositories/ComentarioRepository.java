@@ -13,6 +13,6 @@ public interface ComentarioRepository extends JpaRepository<Comentario, Integer>
     @Query("SELECT COUNT(c) FROM Comentario c WHERE c.post.id = :postId")
     Integer countComentariosByPostId(@Param("postId") Integer postId);
 
-    @Query("SELECT c.id, c.comentario, c.usuario FROM Comentario c WHERE c.post.id = :postId")
-    List<?> getComentariosByPost(@Param("postId") Integer postId);
+    @Query("SELECT c FROM Comentario c WHERE c.post.id = :postId")
+    List<Comentario> getComentariosByPost(@Param("postId") Integer postId);
 }

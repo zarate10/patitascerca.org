@@ -1,0 +1,33 @@
+.box-comments {
+    width: 500px;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    right: 0;
+    padding: 1rem 2rem 4rem 2rem;
+    background: rgb(252, 252, 252);
+    overflow-y: auto;
+    
+}
+.top-clear { 
+    padding: 10px;
+}
+.box-comment { 
+    width: 100%;
+    background: rgb(243, 243, 243);
+    padding: 1.5rem 1.5rem .5rem;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+}
+.box-input-comment { 
+    width: 420px;
+    height: 80px;
+    bottom: 0;
+    position: fixed;
+    display: flex;
+    align-items: center;
+    background: rgb(252, 252, 252);
+}
+.box-input-comment > input { 
+    width: 100%;
+}

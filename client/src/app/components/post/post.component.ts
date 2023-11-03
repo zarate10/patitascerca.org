@@ -17,11 +17,11 @@ export class PostComponent {
     @Input() post!: IPost;
     @Input() user!: IUser;
     @Input() categories!: ICategory[];
-    @Output() deletePostFunction: EventEmitter<number> = new EventEmitter();
+    @Output() deletePostFunction = new EventEmitter();
+    @Output() openComentPost = new EventEmitter(); 
 
     isModalOpen: boolean = false;
     isLiked: boolean = false;
-    isOpenPostDetail: boolean = true; 
 
     postToUpdate = {
         id: 0,
@@ -133,10 +133,9 @@ export class PostComponent {
                 id: post.usuario.id
             }
         };
-
     }
 
-    openPostDetail(post: any) {
-        this.isOpenPostDetail = true; 
+    openComments(post: any) {
+        this.openComentPost.emit(post); 
     }
 }

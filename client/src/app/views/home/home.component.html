@@ -51,16 +51,31 @@
     </div>
 
     <div class="container wrapper-filters">
-        <app-button-filter textBtn="encontradas" [color]="'#B2F3D4'"></app-button-filter>
-        <app-button-filter textBtn="en búsqueda" [color]="'#93ECF2'"></app-button-filter>
-        <app-button-filter textBtn="en adopción" [color]="'#AE88FF'"></app-button-filter>
+        <app-button-filter textBtn="encontradas" [color]="'#B2F3D4'" (click)="filtrarPosts('encontrado')"></app-button-filter>
+        <app-button-filter textBtn="en búsqueda" [color]="'#93ECF2'" (click)="filtrarPosts('perdidos')"></app-button-filter>
+        <app-button-filter textBtn="en adopción" [color]="'#AE88FF'" (click)="filtrarPosts('adopción')"></app-button-filter>
+        <app-button-filter textBtn="general" [color]="'#f3f3ab'" (click)="filtrarPosts('sin-filtro')"></app-button-filter>
     </div>
 
     <div class="container mt-5 mb-4">
         <h5>Reciente</h5>
     </div>
 
-    <home-post *ngFor="let p of posteos" [post]="p" [user]="user" (deletePostFunction)="deletePost($event)"
-        [categories]="categories" />
     
+    <ng-container *ngIf="posteosFiltro.length > 0; else posteosTemplate">
+        <home-post *ngFor="let p of posteosFiltro" [post]="p" [user]="user" (deletePostFunction)="deletePost($event)" (openComentPost)="setComments($event)" [categories]="categories"></home-post>
+    </ng-container>
+    
+    <ng-template #posteosTemplate>
+        <home-post *ngFor="let p of posteos" [post]="p" [user]="user" (deletePostFunction)="deletePost($event)" (openComentPost)="setComments($event)" [categories]="categories"></home-post>
+    </ng-template>
+    
+    
+    <app-post-comments 
+        *ngIf="isOpenComments" 
+        [userID]="user.id" 
+        [post]="postComments" 
+        (closeComments)="closeComments($event)"
+    ></app-post-comments>
+
 </app-wrapper-app>

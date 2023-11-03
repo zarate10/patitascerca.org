@@ -27,7 +27,7 @@ public class ComentarioController {
     }
 
     @GetMapping("{postID}")
-    public List<?> getByPostId(@PathVariable Integer postID) {
+    public List<Comentario> getByPostId(@PathVariable Integer postID) {
         return cs.getByPostId(postID);
     }
 }

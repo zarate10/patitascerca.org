@@ -1,0 +1,20 @@
+<section class="box-comments" >
+    <button class="top-clear" (click)="close()">X</button>
+    
+    <ng-container *ngIf="comentarios.length > 0; else noComments">
+        <div class="box-comment" *ngFor="let c of comentarios">
+            <small>@{{ c.usuario.username }}</small>
+            <p>{{ c.comentario }}</p>
+        </div>
+    </ng-container>
+    
+    <ng-template #noComments>
+        <div class="box-comment">
+            <p>No hay comentarios para mostrar, sé el primero en comentar.</p>
+        </div>
+    </ng-template>
+    
+    <form #formComentario="ngForm" class="box-input-comment" (ngSubmit)="postComment(formComentario)">
+        <input type="text" name="comentario" placeholder="Comentar..." ngModel>
+    </form>
+</section>

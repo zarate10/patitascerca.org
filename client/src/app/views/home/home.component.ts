@@ -17,7 +17,11 @@ export class HomeComponent {
     user!: IUser;
     categories: ICategory[] = [];
     posteos: IPost[] = [];
+    posteosFiltro: IPost[] = [];
     isModalOpen: boolean = false;
+    isOpenComments: boolean = false; 
+    postComments!: IPost; 
+    filtroActual: string = ''; 
 
     constructor(
         private router: Router,
@@ -90,10 +94,20 @@ export class HomeComponent {
         this.isModalOpen = !this.isModalOpen;
     }
 
-    isCommentsOpen: { [postId: number]: boolean } = {};
-
-    toggleComments(post: any) {
-        // Cambia el estado de isCommentsOpen para el post correspondiente
-        this.isCommentsOpen[post.id] = !this.isCommentsOpen[post.id];
+    setComments(event: any){
+        this.isOpenComments = !this.isOpenComments;
+        this.postComments = event;      
     }
+
+    closeComments(event: any) {
+        this.isOpenComments = false;
+    }
+
+    filtrarPosts(filtro: string) {
+        this.posteosFiltro = this.posteos.filter(post => post.categoria.title.toUpperCase() === filtro.toUpperCase());        
+        this.getPosteos();
+    }
+
 }
+
+

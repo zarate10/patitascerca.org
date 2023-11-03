@@ -46,7 +46,7 @@ public class ComentarioService {
         }
     }
 
-    public List<?> getByPostId(Integer postId) {
+    public List<Comentario> getByPostId(Integer postId) {
         try {
             return cr.getComentariosByPost(postId);
         } catch (Exception e) {
