@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { IPost } from 'src/app/models/IPost';
+import { IUser } from 'src/app/models/IUser';
 import { CommentsService } from 'src/app/services/comments.service';
 
 @Component({
@@ -10,7 +11,7 @@ import { CommentsService } from 'src/app/services/comments.service';
 })
 export class PostCommentsComponent {
     @Input() post!: IPost; 
-    @Input() userID!: number; 
+    @Input() user!: IUser; 
     @Input() isOpenComments!: boolean; 
     @Output() closeComments = new EventEmitter(); 
 
@@ -29,19 +30,22 @@ export class PostCommentsComponent {
     postComment(form: NgForm) {
         const { comentario } = form.value; 
 
-        this.commentsService.toComment({
+        const nuevoComentario = { 
             post: {
                 id: this.post.id
             }, 
             usuario: {
-                id: this.userID
+                id: this.user.id, 
+                username: this.user.username
             },
             comentario
-        }).subscribe(data => {
-            this.getComments();
+        }
+
+        this.comentarios.push(nuevoComentario);
+        this.commentsService.toComment(nuevoComentario).subscribe(data => {
+            this.post.totalComentarios++;
+            form.reset();
         })
-        this.post.totalComentarios++;
-        form.reset();
     }
 
     getComments() {

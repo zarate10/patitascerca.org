@@ -10,11 +10,11 @@
     
     <ng-template #noComments>
         <div class="box-comment">
-            <p>No hay comentarios para mostrar, sé el primero en comentar.</p>
+            <p>No hay comentarios para mostrar, sé el primero.</p>
         </div>
     </ng-template>
     
     <form #formComentario="ngForm" class="box-input-comment" (ngSubmit)="postComment(formComentario)">
-        <input type="text" name="comentario" placeholder="Comentar..." ngModel>
+        <input type="text" name="comentario" placeholder="Comentar..." autocomplete="off" ngModel>
     </form>
 </section>

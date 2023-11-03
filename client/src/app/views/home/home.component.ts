@@ -95,7 +95,17 @@ export class HomeComponent {
     }
 
     setComments(event: any){
-        this.isOpenComments = !this.isOpenComments;
+        // acá lo que hacemos es que si ya está abierto, lo cerramos y volvemos a abrir
+        // para que se resetee la info. Por eso el código así. 
+        if (this.isOpenComments) {
+            this.isOpenComments = false; 
+            setTimeout(() => {
+                this.isOpenComments = true; 
+            }, 100)
+        } else {
+            this.isOpenComments = true;
+        }
+        
         this.postComments = event;      
     }
 
