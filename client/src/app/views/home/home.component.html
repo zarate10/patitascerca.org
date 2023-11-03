@@ -73,7 +73,7 @@
     
     <app-post-comments 
         *ngIf="isOpenComments" 
-        [userID]="user.id" 
+        [user]="user" 
         [post]="postComments" 
         (closeComments)="closeComments($event)"
     ></app-post-comments>

@@ -31,7 +31,7 @@ export class AuthComponent {
                 this.isLoginScreen = true; 
             } 
         }, err => {
-            this.toastr.error("Ocurrió un error en el registro.");
+            this.toastr.error("Campos incorrectos.");
         })
     }
     
@@ -42,7 +42,7 @@ export class AuthComponent {
                 this.router.navigate(['home']);
             } 
         }, err => {
-            this.toastr.error("Ocurrió un error en el registro.");
+            this.toastr.error("Usuario o contraseña incorrectos.");
         })
     }
 }
