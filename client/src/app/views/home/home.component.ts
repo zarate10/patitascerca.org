@@ -1,4 +1,4 @@
-import { Component, ChangeDetectorRef } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ICategory } from 'src/app/models/ICategory';
 import { IUser } from 'src/app/models/IUser';
@@ -28,7 +28,6 @@ export class HomeComponent {
         private categoryService: CategoryService,
         private postService: PostService,
         private toastr: ToastrService,
-        private cdr: ChangeDetectorRef
     ) { }
 
     ngOnInit() {
@@ -83,7 +82,6 @@ export class HomeComponent {
             this.getPosteos();
         }, err => {
             console.log(err);
-
             this.toastr.error('Ocurrió un error al crear la publicación.');
         });
         this.isModalOpen = false;
