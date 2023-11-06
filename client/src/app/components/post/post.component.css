@@ -13,6 +13,7 @@
 
 @keyframes showPost {
     0% {
+        transform: translateY(100%);
         opacity: 0;
     }
     100% {
@@ -74,6 +75,15 @@
 .box-info-comments > .right-ic { 
     opacity: 0.5;
     margin-right: 5px;
+    
+}
+@media (max-width: 600px){ 
+    .box-info-comments > .right-ic  { 
+        font-size: 0.6em;
+    }
+    .tags {
+        flex-direction: column;
+    }
 }
 .box-info-comments > .left-ic > button {
     height: 50px;
